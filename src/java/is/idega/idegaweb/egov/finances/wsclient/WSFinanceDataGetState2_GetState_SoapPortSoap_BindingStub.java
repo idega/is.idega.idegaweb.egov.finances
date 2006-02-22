@@ -39,16 +39,16 @@ public class WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub extends or
 
     }
 
-    public WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub() throws org.apache.axis.AxisFault {
+    public WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub() {
          this(null);
     }
 
-    public WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
+    public WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) {
          this(service);
          super.cachedEndpoint = endpointURL;
     }
 
-    public WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
+    public WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub(javax.xml.rpc.Service service) {
         if (service == null) {
             super.service = new org.apache.axis.client.Service();
         } else {

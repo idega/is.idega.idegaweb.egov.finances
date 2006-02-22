@@ -39,16 +39,16 @@ public class WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub ext
 
     }
 
-    public WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub() throws org.apache.axis.AxisFault {
+    public WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub() {
          this(null);
     }
 
-    public WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
+    public WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) {
          this(service);
          super.cachedEndpoint = endpointURL;
     }
 
-    public WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
+    public WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub(javax.xml.rpc.Service service) {
         if (service == null) {
             super.service = new org.apache.axis.client.Service();
         } else {

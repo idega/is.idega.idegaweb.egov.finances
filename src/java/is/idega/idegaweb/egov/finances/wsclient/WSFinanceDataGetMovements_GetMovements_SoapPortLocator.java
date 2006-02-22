@@ -55,15 +55,10 @@ public class WSFinanceDataGetMovements_GetMovements_SoapPortLocator extends org.
         return getWSFinanceDataGetMovements_GetMovements_SoapPortSoap(endpoint);
     }
 
-    public is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_PortType getWSFinanceDataGetMovements_GetMovements_SoapPortSoap(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
-        try {
-            is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub _stub = new is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub(portAddress, this);
-            _stub.setPortName(getWSFinanceDataGetMovements_GetMovements_SoapPortSoapWSDDServiceName());
-            return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
-            return null;
-        }
+    public is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_PortType getWSFinanceDataGetMovements_GetMovements_SoapPortSoap(java.net.URL portAddress) {
+        is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub _stub = new is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub(portAddress, this);
+        _stub.setPortName(getWSFinanceDataGetMovements_GetMovements_SoapPortSoapWSDDServiceName());
+        return _stub;
     }
 
     public void setWSFinanceDataGetMovements_GetMovements_SoapPortSoapEndpointAddress(java.lang.String address) {
