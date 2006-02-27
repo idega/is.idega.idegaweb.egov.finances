@@ -23,10 +23,15 @@ public class TestClient {
 	 */
 	public static void main(String[] args) {
 		try {
-			String endpoint = "http://213.167.155.148/WSFinanceDataGetTypes/WSFinanceDataGetTypes_GetTypes_SoapPort.asmx";
-			String endpoint2 = "http://213.167.155.148/WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort.asmx";
-			String endpoint3 = "http://213.167.155.148/WSFinanceDataGetMovements/WSFinanceDataGetMovements_GetMovements_SoapPort.asmx";
+//			String endpoint = "http://213.167.155.148/WSFinanceDataGetTypes/WSFinanceDataGetTypes_GetTypes_SoapPort.asmx";
+//			String endpoint2 = "http://213.167.155.148/WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort.asmx";
+//			String endpoint3 = "http://213.167.155.148/WSFinanceDataGetMovements/WSFinanceDataGetMovements_GetMovements_SoapPort.asmx";
 
+			String endpoint = "http://10.30.11.55/WSFinanceDataGetTypes/WSFinanceDataGetTypes_GetTypes_SoapPort.asmx";
+			String endpoint2 = "http://10.30.11.55/WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort.asmx";
+			String endpoint3 = "http://10.30.11.55/WSFinanceDataGetMovements/WSFinanceDataGetMovements_GetMovements_SoapPort.asmx";
+
+			
 			System.out.println("STARTING TYPE HANDLING");
 			WSFinanceDataGetTypes_GetTypes_SoapPortLocator locator = new WSFinanceDataGetTypes_GetTypes_SoapPortLocator();
 			WSFinanceDataGetTypes_GetTypes_SoapPortSoap_PortType port = locator.getWSFinanceDataGetTypes_GetTypes_SoapPortSoap(new URL(

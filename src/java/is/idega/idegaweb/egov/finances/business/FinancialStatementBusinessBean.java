@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatementBusinessBean.java,v 1.6 2006/02/27 14:45:10 palli Exp $
+ * $Id: FinancialStatementBusinessBean.java,v 1.7 2006/02/27 15:15:32 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -39,15 +39,15 @@ import com.idega.util.IWTimestamp;
 public class FinancialStatementBusinessBean extends IBOServiceBean implements
 		FinancialStatementBusiness {
 
-	protected final static String PAYMENT_ITEMS_ENDPOINT = "http://213.167.155.148/WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort.asmx";
+	protected final static String PAYMENT_ITEMS_ENDPOINT = "http://10.30.11.55/WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort.asmx";
 
-	protected final static String MOVEMENTS_ITEMS_ENDPOINT = "http://213.167.155.148/WSFinanceDataGetMovements/WSFinanceDataGetMovements_GetMovements_SoapPort.asmx";
+	protected final static String MOVEMENTS_ITEMS_ENDPOINT = "http://10.30.11.55/WSFinanceDataGetMovements/WSFinanceDataGetMovements_GetMovements_SoapPort.asmx";
 
 	public Collection getPaymentItems(String communeNumber, String personalId,
 			String endpoint) {
 		Collection c = new Vector();
 
-		PaymentItem p1 = new PaymentItem();
+		/*PaymentItem p1 = new PaymentItem();
 		p1.setName("Test type");
 		p1.setAmount(100.0d);
 		p1.setEntryTypeId(1);
@@ -55,9 +55,9 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 		
 		c.add(p1);
 		
-		return c;
+		return c;*/
 
-		/*
+		
 		if (endpoint == null) {
 			endpoint = PAYMENT_ITEMS_ENDPOINT;
 		}
@@ -100,7 +100,7 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 			e.printStackTrace();
 		}
 
-		return c;*/
+		return c;
 	}
 
 	public Collection getStatementItems(String communeNumber,
@@ -108,7 +108,7 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 			IWTimestamp toStamp, String endpoint) {
 		Collection c = new Vector();
 
-		StatementItem s1 = new StatementItem();
+/*		StatementItem s1 = new StatementItem();
 		s1.setName("Statement type 1");
 		s1.setAmount(50.0d);
 		s1.setLastDate(new IWTimestamp());
@@ -121,10 +121,10 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 		c.add(s1);
 		c.add(s2);
 		
-		return c;
+		return c;*/
 		
 		
-		/*if (endpoint == null) {
+		if (endpoint == null) {
 			endpoint = MOVEMENTS_ITEMS_ENDPOINT;
 		}
 
@@ -169,7 +169,7 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 			e.printStackTrace();
 		}
 
-		return c;*/
+		return c;
 	}
 
 	public String getHomeCommuneNumber() {
