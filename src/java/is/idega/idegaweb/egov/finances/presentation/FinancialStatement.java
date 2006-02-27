@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatement.java,v 1.3 2006/02/27 13:41:44 palli Exp $
+ * $Id: FinancialStatement.java,v 1.4 2006/02/27 15:02:35 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -204,7 +204,7 @@ public class FinancialStatement extends FinanceBlock {
 				cell.add(new Text(iwrb.getLocalizedString("due_date",
 						"Due date")));
 
-				DecimalFormat format = new DecimalFormat("#.###,##");
+				DecimalFormat format = new DecimalFormat("#,###.##");
 				
 				while (iIter.hasNext()) {
 					StatementItem s = (StatementItem) iIter.next();
@@ -253,7 +253,7 @@ public class FinancialStatement extends FinanceBlock {
 				cell.setStyleClass("statement");
 				cell.setStyleClass("amount");
 				cell.setStyleClass("lastColumn");
-				cell.add(new Text(Double.toString(sum)));
+				cell.add(new Text(format.format(sum)));
 				cell = row.createCell();
 
 				row = group.createRow();
