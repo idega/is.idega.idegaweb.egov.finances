@@ -48,7 +48,7 @@ public class TestClient {
 			System.out.println("STARTING STATE HANDLING");
 			WSFinanceDataGetState2_GetState_SoapPortLocator state_locator = new WSFinanceDataGetState2_GetState_SoapPortLocator();
 			WSFinanceDataGetState2_GetState_SoapPortSoap_PortType state_port = state_locator.getWSFinanceDataGetState2_GetState_SoapPortSoap(new URL(endpoint2));
-			Getstate_responseRecords state_records[] = state_port.getState(new GetStateRequest("8200", "2707724049"));
+			Getstate_responseRecords state_records[] = state_port.getState(new GetStateRequest("1", "2707724049"));
 			for (int i = 0; i < state_records.length; i++) {
 				Getstate_responseRecords state_record = state_records[i];
 				System.out.println("balance = " + state_record.getBalance());
@@ -62,7 +62,7 @@ public class TestClient {
 			System.out.println("STARTING MOVEMENTS HANDLING");
 			WSFinanceDataGetMovements_GetMovements_SoapPortLocator movement_locator = new WSFinanceDataGetMovements_GetMovements_SoapPortLocator();
 			WSFinanceDataGetMovements_GetMovements_SoapPortSoap_PortType movement_port = movement_locator.getWSFinanceDataGetMovements_GetMovements_SoapPortSoap(new URL(endpoint3));
-			Getmovements_responseMovements movements[] = movement_port.getMovements(new Getmovements_request(8200, "2707724049", "2005-12-01", "2006-03-01", 1));
+			Getmovements_responseMovements movements[] = movement_port.getMovements(new Getmovements_request(1, "2707724049", "2005-12-01", "2006-03-01", 1));
 			for (int i = 0; i < movements.length; i++) {
 				Getmovements_responseMovements movement = movements[i];
 				System.out.println("balance = " + movement.getBalance());
