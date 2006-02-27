@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatementBusinessBean.java,v 1.2 2006/02/27 13:15:35 palli Exp $
+ * $Id: FinancialStatementBusinessBean.java,v 1.3 2006/02/27 13:41:44 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -11,16 +11,55 @@ package is.idega.idegaweb.egov.finances.business;
 
 import is.idega.idegaweb.egov.finances.data.PaymentItem;
 import is.idega.idegaweb.egov.finances.data.StatementItem;
+import is.idega.idegaweb.egov.finances.wsclient.GetStateRequest;
+import is.idega.idegaweb.egov.finances.wsclient.Getstate_responseRecords;
+import is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortLocator;
+import is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_PortType;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.Collection;
 import java.util.Vector;
+
+import javax.xml.rpc.ServiceException;
+
 import com.idega.business.IBOServiceBean;
 import com.idega.util.IWTimestamp;
 
 
 public class FinancialStatementBusinessBean extends IBOServiceBean  implements FinancialStatementBusiness{
 
-	public Collection getPaymentItems(String communeNumber, String personalId) {
+	protected final static String PAYMENT_ITEMS_ENDPOINT = "http://213.167.155.148/WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort.asmx"; 
+	
+	public Collection getPaymentItems(String communeNumber, String personalId, String endpoint) {
 		Collection c = new Vector();
+		
+		if (endpoint == null) {
+			endpoint = PAYMENT_ITEMS_ENDPOINT;
+		}
+		
+		try {
+		WSFinanceDataGetState2_GetState_SoapPortLocator state_locator = new WSFinanceDataGetState2_GetState_SoapPortLocator();
+		WSFinanceDataGetState2_GetState_SoapPortSoap_PortType state_port = state_locator.getWSFinanceDataGetState2_GetState_SoapPortSoap(new URL(endpoint));
+		Getstate_responseRecords state_records[] = state_port.getState(new GetStateRequest(communeNumber, personalId));
+		for (int i = 0; i < state_records.length; i++) {
+			Getstate_responseRecords state_record = state_records[i];
+			System.out.println("balance = " + state_record.getBalance());
+			System.out.println("description = " + state_record.getDescription());
+			System.out.println("oldest unpaid date = " + state_record.getOldest_unpaid_date());
+			System.out.println("sf_id = " + state_record.getSf_id());
+			System.out.println("ssn = " + state_record.getSocial_security());
+			System.out.println("type = " + state_record.getType_id());
+		}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+
 		
 		PaymentItem p1 = new PaymentItem();
 		p1.setName("Fasteignagjöld");
@@ -50,7 +89,7 @@ public class FinancialStatementBusinessBean extends IBOServiceBean  implements F
 		return c;
 	}
 	
-	public Collection getStatementItems(String communeNumber, String personalId, PaymentItem pType, IWTimestamp fromStamp, IWTimestamp toStamp) {
+	public Collection getStatementItems(String communeNumber, String personalId, PaymentItem pType, IWTimestamp fromStamp, IWTimestamp toStamp, String endpoint) {
 		Collection c = new Vector();
 		
 		StatementItem s1 = new StatementItem();

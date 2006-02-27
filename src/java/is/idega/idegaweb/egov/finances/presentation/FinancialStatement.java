@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatement.java,v 1.2 2006/02/27 13:15:35 palli Exp $
+ * $Id: FinancialStatement.java,v 1.3 2006/02/27 13:41:44 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -48,6 +48,10 @@ public class FinancialStatement extends FinanceBlock {
 	private String fixedCommuneNumber = null;
 	
 	private String tableStyleClass = "CaseTable";
+	
+	private String stateEndPoint = null;
+	
+	private String movementsEndPoint = null;
 
 	protected void present(IWContext iwc) throws RemoteException {
 		if (fixedPersonalId == null) {
@@ -98,7 +102,7 @@ public class FinancialStatement extends FinanceBlock {
 		boolean odd = true;
 		String selected = iwc.getParameter(PARAMETER_PAYMENT_ITEM);
 
-		Collection coll = getBusiness(iwc).getPaymentItems("1", "tempKT");
+		Collection coll = getBusiness(iwc).getPaymentItems(communeNumber, personalId, stateEndPoint);
 		Iterator iter = coll.iterator();
 		while (iter.hasNext()) {
 			PaymentItem p = (PaymentItem) iter.next();
@@ -141,8 +145,8 @@ public class FinancialStatement extends FinanceBlock {
 					toStamp.addDays(14);
 				}
 
-				Collection items = getBusiness(iwc).getStatementItems("1", "tempKR",
-						p, fromStamp, toStamp);
+				Collection items = getBusiness(iwc).getStatementItems(communeNumber, personalId,
+						p, fromStamp, toStamp, movementsEndPoint);
 				Iterator iIter = items.iterator();
 
 				row = group.createRow();
@@ -280,5 +284,17 @@ public class FinancialStatement extends FinanceBlock {
 	
 	public void setPersonalId(String personalId) {
 		this.fixedPersonalId = personalId;
+	}
+	
+	public void setTableStyleClass(String tableStyleClass) {
+		this.tableStyleClass = tableStyleClass;
+	}
+	
+	public void setStateEndPoint(String endPoint) {
+		this.stateEndPoint = endPoint;
+	}
+	
+	public void setMovementEndPoint(String endPoint) {
+		this.movementsEndPoint = endPoint;
 	}
 }
