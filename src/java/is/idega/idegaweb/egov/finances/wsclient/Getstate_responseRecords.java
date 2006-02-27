@@ -12,6 +12,8 @@ public class Getstate_responseRecords  implements java.io.Serializable {
 
     private java.lang.String social_security;
 
+    private java.lang.String type_id;
+
     private java.lang.String description;
 
     private java.math.BigDecimal balance;
@@ -24,11 +26,13 @@ public class Getstate_responseRecords  implements java.io.Serializable {
     public Getstate_responseRecords(
            java.lang.String sf_id,
            java.lang.String social_security,
+           java.lang.String type_id,
            java.lang.String description,
            java.math.BigDecimal balance,
            java.lang.String oldest_unpaid_date) {
            this.sf_id = sf_id;
            this.social_security = social_security;
+           this.type_id = type_id;
            this.description = description;
            this.balance = balance;
            this.oldest_unpaid_date = oldest_unpaid_date;
@@ -72,6 +76,26 @@ public class Getstate_responseRecords  implements java.io.Serializable {
      */
     public void setSocial_security(java.lang.String social_security) {
         this.social_security = social_security;
+    }
+
+
+    /**
+     * Gets the type_id value for this Getstate_responseRecords.
+     * 
+     * @return type_id
+     */
+    public java.lang.String getType_id() {
+        return type_id;
+    }
+
+
+    /**
+     * Sets the type_id value for this Getstate_responseRecords.
+     * 
+     * @param type_id
+     */
+    public void setType_id(java.lang.String type_id) {
+        this.type_id = type_id;
     }
 
 
@@ -152,6 +176,9 @@ public class Getstate_responseRecords  implements java.io.Serializable {
             ((this.social_security==null && other.getSocial_security()==null) || 
              (this.social_security!=null &&
               this.social_security.equals(other.getSocial_security()))) &&
+            ((this.type_id==null && other.getType_id()==null) || 
+             (this.type_id!=null &&
+              this.type_id.equals(other.getType_id()))) &&
             ((this.description==null && other.getDescription()==null) || 
              (this.description!=null &&
               this.description.equals(other.getDescription()))) &&
@@ -177,6 +204,9 @@ public class Getstate_responseRecords  implements java.io.Serializable {
         }
         if (getSocial_security() != null) {
             _hashCode += getSocial_security().hashCode();
+        }
+        if (getType_id() != null) {
+            _hashCode += getType_id().hashCode();
         }
         if (getDescription() != null) {
             _hashCode += getDescription().hashCode();
@@ -207,6 +237,13 @@ public class Getstate_responseRecords  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("social_security");
         elemField.setXmlName(new javax.xml.namespace.QName("", "social_security"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("type_id");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "type_id"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);

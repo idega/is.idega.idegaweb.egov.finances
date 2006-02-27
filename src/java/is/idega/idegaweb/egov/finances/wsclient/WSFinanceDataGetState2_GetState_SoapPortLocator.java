@@ -55,10 +55,15 @@ public class WSFinanceDataGetState2_GetState_SoapPortLocator extends org.apache.
         return getWSFinanceDataGetState2_GetState_SoapPortSoap(endpoint);
     }
 
-    public is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_PortType getWSFinanceDataGetState2_GetState_SoapPortSoap(java.net.URL portAddress) {
-        is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub _stub = new is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub(portAddress, this);
-        _stub.setPortName(getWSFinanceDataGetState2_GetState_SoapPortSoapWSDDServiceName());
-        return _stub;
+    public is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_PortType getWSFinanceDataGetState2_GetState_SoapPortSoap(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+        try {
+            is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub _stub = new is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub(portAddress, this);
+            _stub.setPortName(getWSFinanceDataGetState2_GetState_SoapPortSoapWSDDServiceName());
+            return _stub;
+        }
+        catch (org.apache.axis.AxisFault e) {
+            return null;
+        }
     }
 
     public void setWSFinanceDataGetState2_GetState_SoapPortSoapEndpointAddress(java.lang.String address) {
@@ -105,7 +110,7 @@ public class WSFinanceDataGetState2_GetState_SoapPortLocator extends org.apache.
     }
 
     public javax.xml.namespace.QName getServiceName() {
-        return new javax.xml.namespace.QName("http://WSFinanceDataGetState/", "WSFinanceDataGetState2_GetState_SoapPort");
+        return new javax.xml.namespace.QName("http://WSFinanceDataGetState2/", "WSFinanceDataGetState2_GetState_SoapPort");
     }
 
     private java.util.HashSet ports = null;
@@ -113,7 +118,7 @@ public class WSFinanceDataGetState2_GetState_SoapPortLocator extends org.apache.
     public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("http://WSFinanceDataGetState/", "WSFinanceDataGetState2_GetState_SoapPortSoap"));
+            ports.add(new javax.xml.namespace.QName("http://WSFinanceDataGetState2/", "WSFinanceDataGetState2_GetState_SoapPortSoap"));
         }
         return ports.iterator();
     }

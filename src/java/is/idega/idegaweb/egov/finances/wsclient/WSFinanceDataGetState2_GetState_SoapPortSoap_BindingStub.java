@@ -39,16 +39,16 @@ public class WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub extends or
 
     }
 
-    public WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub() {
+    public WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub() throws org.apache.axis.AxisFault {
          this(null);
     }
 
-    public WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) {
+    public WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
          this(service);
          super.cachedEndpoint = endpointURL;
     }
 
-    public WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub(javax.xml.rpc.Service service) {
+    public WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
         if (service == null) {
             super.service = new org.apache.axis.client.Service();
         } else {
@@ -60,14 +60,14 @@ public class WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub extends or
             javax.xml.namespace.QName qName2;
             java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
             java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-//            java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
-//            java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
-//            java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
-//            java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
-//            java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
-//            java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
-//            java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
-//            java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
+            java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
+            java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
+            java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
+            java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
+            java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
+            java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
+            java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
+            java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
             qName = new javax.xml.namespace.QName("http://WSGetFinanceData.GetStateRequest", "GetStateRequest");
             cachedSerQNames.add(qName);
             cls = is.idega.idegaweb.egov.finances.wsclient.GetStateRequest.class;
@@ -164,12 +164,12 @@ public class WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub extends or
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[0]);
         _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("http://WSFinanceDataGetState/WSFinanceDataGetState2_GetState_SoapPort/GetState");
+        _call.setSOAPActionURI("http://WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort/GetState");
         _call.setEncodingStyle(null);
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://WSFinanceDataGetState/", "GetState"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://WSFinanceDataGetState2/", "GetState"));
 
         setRequestHeaders(_call);
         setAttachments(_call);

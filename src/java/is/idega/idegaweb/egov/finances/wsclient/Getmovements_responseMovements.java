@@ -8,11 +8,13 @@
 package is.idega.idegaweb.egov.finances.wsclient;
 
 public class Getmovements_responseMovements  implements java.io.Serializable {
-    private java.lang.String sf_id;
+    private int sf_id;
 
     private java.lang.String social_security;
 
     private java.lang.String description;
+
+    private java.lang.String type_id;
 
     private java.lang.String type;
 
@@ -28,9 +30,10 @@ public class Getmovements_responseMovements  implements java.io.Serializable {
     }
 
     public Getmovements_responseMovements(
-           java.lang.String sf_id,
+           int sf_id,
            java.lang.String social_security,
            java.lang.String description,
+           java.lang.String type_id,
            java.lang.String type,
            java.math.BigDecimal movement,
            java.math.BigDecimal balance,
@@ -39,6 +42,7 @@ public class Getmovements_responseMovements  implements java.io.Serializable {
            this.sf_id = sf_id;
            this.social_security = social_security;
            this.description = description;
+           this.type_id = type_id;
            this.type = type;
            this.movement = movement;
            this.balance = balance;
@@ -52,7 +56,7 @@ public class Getmovements_responseMovements  implements java.io.Serializable {
      * 
      * @return sf_id
      */
-    public java.lang.String getSf_id() {
+    public int getSf_id() {
         return sf_id;
     }
 
@@ -62,7 +66,7 @@ public class Getmovements_responseMovements  implements java.io.Serializable {
      * 
      * @param sf_id
      */
-    public void setSf_id(java.lang.String sf_id) {
+    public void setSf_id(int sf_id) {
         this.sf_id = sf_id;
     }
 
@@ -104,6 +108,26 @@ public class Getmovements_responseMovements  implements java.io.Serializable {
      */
     public void setDescription(java.lang.String description) {
         this.description = description;
+    }
+
+
+    /**
+     * Gets the type_id value for this Getmovements_responseMovements.
+     * 
+     * @return type_id
+     */
+    public java.lang.String getType_id() {
+        return type_id;
+    }
+
+
+    /**
+     * Sets the type_id value for this Getmovements_responseMovements.
+     * 
+     * @param type_id
+     */
+    public void setType_id(java.lang.String type_id) {
+        this.type_id = type_id;
     }
 
 
@@ -218,15 +242,16 @@ public class Getmovements_responseMovements  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
-            ((this.sf_id==null && other.getSf_id()==null) || 
-             (this.sf_id!=null &&
-              this.sf_id.equals(other.getSf_id()))) &&
+            this.sf_id == other.getSf_id() &&
             ((this.social_security==null && other.getSocial_security()==null) || 
              (this.social_security!=null &&
               this.social_security.equals(other.getSocial_security()))) &&
             ((this.description==null && other.getDescription()==null) || 
              (this.description!=null &&
               this.description.equals(other.getDescription()))) &&
+            ((this.type_id==null && other.getType_id()==null) || 
+             (this.type_id!=null &&
+              this.type_id.equals(other.getType_id()))) &&
             ((this.type==null && other.getType()==null) || 
              (this.type!=null &&
               this.type.equals(other.getType()))) &&
@@ -253,14 +278,15 @@ public class Getmovements_responseMovements  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
-        if (getSf_id() != null) {
-            _hashCode += getSf_id().hashCode();
-        }
+        _hashCode += getSf_id();
         if (getSocial_security() != null) {
             _hashCode += getSocial_security().hashCode();
         }
         if (getDescription() != null) {
             _hashCode += getDescription().hashCode();
+        }
+        if (getType_id() != null) {
+            _hashCode += getType_id().hashCode();
         }
         if (getType() != null) {
             _hashCode += getType().hashCode();
@@ -290,8 +316,7 @@ public class Getmovements_responseMovements  implements java.io.Serializable {
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("sf_id");
         elemField.setXmlName(new javax.xml.namespace.QName("", "sf_id"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
@@ -304,6 +329,13 @@ public class Getmovements_responseMovements  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("description");
         elemField.setXmlName(new javax.xml.namespace.QName("", "description"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("type_id");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "type_id"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);

@@ -37,16 +37,16 @@ public class WSFinanceDataGetTypes_GetTypes_SoapPortSoap_BindingStub extends org
 
     }
 
-    public WSFinanceDataGetTypes_GetTypes_SoapPortSoap_BindingStub() {
+    public WSFinanceDataGetTypes_GetTypes_SoapPortSoap_BindingStub() throws org.apache.axis.AxisFault {
          this(null);
     }
 
-    public WSFinanceDataGetTypes_GetTypes_SoapPortSoap_BindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) {
+    public WSFinanceDataGetTypes_GetTypes_SoapPortSoap_BindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
          this(service);
          super.cachedEndpoint = endpointURL;
     }
 
-    public WSFinanceDataGetTypes_GetTypes_SoapPortSoap_BindingStub(javax.xml.rpc.Service service) {
+    public WSFinanceDataGetTypes_GetTypes_SoapPortSoap_BindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
         if (service == null) {
             super.service = new org.apache.axis.client.Service();
         } else {
@@ -55,17 +55,17 @@ public class WSFinanceDataGetTypes_GetTypes_SoapPortSoap_BindingStub extends org
         ((org.apache.axis.client.Service)super.service).setTypeMappingVersion("1.2");
             java.lang.Class cls;
             javax.xml.namespace.QName qName;
-//            javax.xml.namespace.QName qName2;
+            javax.xml.namespace.QName qName2;
             java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
             java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-//            java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
-//            java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
-//            java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
-//            java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
-//            java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
-//            java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
-//            java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
-//            java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
+            java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
+            java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
+            java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
+            java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
+            java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
+            java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
+            java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
+            java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
             qName = new javax.xml.namespace.QName("http://WSGetFinanceData.GetTypesRequest", "gettypes_request");
             cachedSerQNames.add(qName);
             cls = is.idega.idegaweb.egov.finances.wsclient.Gettypes_request.class;

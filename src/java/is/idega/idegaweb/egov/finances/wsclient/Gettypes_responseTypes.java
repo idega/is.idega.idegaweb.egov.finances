@@ -8,6 +8,8 @@
 package is.idega.idegaweb.egov.finances.wsclient;
 
 public class Gettypes_responseTypes  implements java.io.Serializable {
+    private java.lang.String type_id;
+
     private java.lang.String type;
 
     private java.lang.String description;
@@ -16,10 +18,32 @@ public class Gettypes_responseTypes  implements java.io.Serializable {
     }
 
     public Gettypes_responseTypes(
+           java.lang.String type_id,
            java.lang.String type,
            java.lang.String description) {
+           this.type_id = type_id;
            this.type = type;
            this.description = description;
+    }
+
+
+    /**
+     * Gets the type_id value for this Gettypes_responseTypes.
+     * 
+     * @return type_id
+     */
+    public java.lang.String getType_id() {
+        return type_id;
+    }
+
+
+    /**
+     * Sets the type_id value for this Gettypes_responseTypes.
+     * 
+     * @param type_id
+     */
+    public void setType_id(java.lang.String type_id) {
+        this.type_id = type_id;
     }
 
 
@@ -74,6 +98,9 @@ public class Gettypes_responseTypes  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
+            ((this.type_id==null && other.getType_id()==null) || 
+             (this.type_id!=null &&
+              this.type_id.equals(other.getType_id()))) &&
             ((this.type==null && other.getType()==null) || 
              (this.type!=null &&
               this.type.equals(other.getType()))) &&
@@ -91,6 +118,9 @@ public class Gettypes_responseTypes  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
+        if (getType_id() != null) {
+            _hashCode += getType_id().hashCode();
+        }
         if (getType() != null) {
             _hashCode += getType().hashCode();
         }
@@ -108,6 +138,13 @@ public class Gettypes_responseTypes  implements java.io.Serializable {
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://WSGetFinanceData.GetTypesResponse", "gettypes_responseTypes"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("type_id");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "type_id"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("type");
         elemField.setXmlName(new javax.xml.namespace.QName("", "type"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));

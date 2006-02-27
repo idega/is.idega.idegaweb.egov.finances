@@ -4,7 +4,7 @@
   <extend>${base.project.dir}/base-dependencies.xml</extend>
   <pomVersion>3</pomVersion>
   <name>eGov General Cases</name>
-  <artifactId>is.idega.idegaweb.egov.application</artifactId>
+  <artifactId>is.idega.idegaweb.egov.finances</artifactId>
   <!--currentVersion>1.0</currentVersion-->
   <currentVersion>1.0-SNAPSHOT</currentVersion>
   <inceptionYear>2005</inceptionYear>
@@ -14,9 +14,16 @@
   <branches/>
   <developers>
     <developer>
-      <name>Thorhallur Helgason</name>
-      <id>laddi</id>
-      <email>laddi@idega.is</email>
+      <name>Pall Helgason</name>
+      <id>palli</id>
+      <email>palli@idega.is</email>
+      <organization>idega software</organization>
+      <roles/>
+    </developer>
+    <developer>
+      <name>Grimur Jonsson</name>
+      <id>gimmi</id>
+      <email>gimmi@idega.is</email>
       <organization>idega software</organization>
       <roles/>
     </developer>
