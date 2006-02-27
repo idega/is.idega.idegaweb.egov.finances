@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatementBusinessBean.java,v 1.1 2006/02/07 10:52:42 gimmi Exp $
+ * $Id: FinancialStatementBusinessBean.java,v 1.2 2006/02/27 13:15:35 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -19,7 +19,7 @@ import com.idega.util.IWTimestamp;
 
 public class FinancialStatementBusinessBean extends IBOServiceBean  implements FinancialStatementBusiness{
 
-	public Collection getPaymentItems(String kt) {
+	public Collection getPaymentItems(String communeNumber, String personalId) {
 		Collection c = new Vector();
 		
 		PaymentItem p1 = new PaymentItem();
@@ -50,7 +50,7 @@ public class FinancialStatementBusinessBean extends IBOServiceBean  implements F
 		return c;
 	}
 	
-	public Collection getStatementItems(String kt, PaymentItem pType, IWTimestamp fromStamp, IWTimestamp toStamp) {
+	public Collection getStatementItems(String communeNumber, String personalId, PaymentItem pType, IWTimestamp fromStamp, IWTimestamp toStamp) {
 		Collection c = new Vector();
 		
 		StatementItem s1 = new StatementItem();
@@ -81,4 +81,9 @@ public class FinancialStatementBusinessBean extends IBOServiceBean  implements F
 		return c;
 	}
 
+	public String getHomeCommuneNumber() {
+		
+		
+		return "1";
+	}
 }
