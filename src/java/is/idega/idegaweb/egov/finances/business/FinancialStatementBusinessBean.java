@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatementBusinessBean.java,v 1.4 2006/02/27 14:03:12 palli Exp $
+ * $Id: FinancialStatementBusinessBean.java,v 1.5 2006/02/27 14:04:05 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -29,13 +29,11 @@ import java.util.Vector;
 import javax.ejb.FinderException;
 import javax.xml.rpc.ServiceException;
 
-import com.idega.business.IBOLookup;
 import com.idega.business.IBOLookupException;
 import com.idega.business.IBOServiceBean;
 import com.idega.core.location.business.CommuneBusiness;
 import com.idega.core.location.data.Commune;
 import com.idega.data.IDOLookupException;
-import com.idega.presentation.IWContext;
 import com.idega.util.IWTimestamp;
 
 public class FinancialStatementBusinessBean extends IBOServiceBean implements
