@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatementBusinessBean.java,v 1.5 2006/02/27 14:04:05 palli Exp $
+ * $Id: FinancialStatementBusinessBean.java,v 1.6 2006/02/27 14:45:10 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -47,6 +47,17 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 			String endpoint) {
 		Collection c = new Vector();
 
+		PaymentItem p1 = new PaymentItem();
+		p1.setName("Test type");
+		p1.setAmount(100.0d);
+		p1.setEntryTypeId(1);
+		p1.setLastDate(new IWTimestamp());
+		
+		c.add(p1);
+		
+		return c;
+
+		/*
 		if (endpoint == null) {
 			endpoint = PAYMENT_ITEMS_ENDPOINT;
 		}
@@ -89,7 +100,7 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 			e.printStackTrace();
 		}
 
-		return c;
+		return c;*/
 	}
 
 	public Collection getStatementItems(String communeNumber,
@@ -97,7 +108,23 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 			IWTimestamp toStamp, String endpoint) {
 		Collection c = new Vector();
 
-		if (endpoint == null) {
+		StatementItem s1 = new StatementItem();
+		s1.setName("Statement type 1");
+		s1.setAmount(50.0d);
+		s1.setLastDate(new IWTimestamp());
+		
+		StatementItem s2 = new StatementItem();
+		s2.setName("Statement type 1");
+		s2.setAmount(50.0d);
+		s2.setLastDate(new IWTimestamp());
+		
+		c.add(s1);
+		c.add(s2);
+		
+		return c;
+		
+		
+		/*if (endpoint == null) {
 			endpoint = MOVEMENTS_ITEMS_ENDPOINT;
 		}
 
@@ -142,7 +169,7 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 			e.printStackTrace();
 		}
 
-		return c;
+		return c;*/
 	}
 
 	public String getHomeCommuneNumber() {
