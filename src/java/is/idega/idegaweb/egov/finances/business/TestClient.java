@@ -16,6 +16,10 @@ import is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetTypes_GetTypes_S
 
 import java.net.URL;
 
+import org.apache.axis.EngineConfiguration;
+import org.apache.axis.EngineConfigurationFactory;
+import org.apache.axis.configuration.EngineConfigurationFactoryDefault;
+
 public class TestClient {
 
 	/**
@@ -23,16 +27,16 @@ public class TestClient {
 	 */
 	public static void main(String[] args) {
 		try {
-//			String endpoint = "http://213.167.155.148/WSFinanceDataGetTypes/WSFinanceDataGetTypes_GetTypes_SoapPort.asmx";
-//			String endpoint2 = "http://213.167.155.148/WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort.asmx";
-//			String endpoint3 = "http://213.167.155.148/WSFinanceDataGetMovements/WSFinanceDataGetMovements_GetMovements_SoapPort.asmx";
+			String endpoint = "http://213.167.155.148/WSFinanceDataGetTypes/WSFinanceDataGetTypes_GetTypes_SoapPort.asmx";
+			String endpoint2 = "http://213.167.155.148/WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort.asmx";
+			String endpoint3 = "http://213.167.155.148/WSFinanceDataGetMovements/WSFinanceDataGetMovements_GetMovements_SoapPort.asmx";
 
-			String endpoint = "http://10.30.11.55/WSFinanceDataGetTypes/WSFinanceDataGetTypes_GetTypes_SoapPort.asmx";
-			String endpoint2 = "http://10.30.11.55/WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort.asmx";
-			String endpoint3 = "http://10.30.11.55/WSFinanceDataGetMovements/WSFinanceDataGetMovements_GetMovements_SoapPort.asmx";
+//			String endpoint = "http://10.30.11.55/WSFinanceDataGetTypes/WSFinanceDataGetTypes_GetTypes_SoapPort.asmx";
+//			String endpoint2 = "http://10.30.11.55/WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort.asmx";
+//			String endpoint3 = "http://10.30.11.55/WSFinanceDataGetMovements/WSFinanceDataGetMovements_GetMovements_SoapPort.asmx";
 
 			
-			System.out.println("STARTING TYPE HANDLING");
+			/*System.out.println("STARTING TYPE HANDLING");
 			WSFinanceDataGetTypes_GetTypes_SoapPortLocator locator = new WSFinanceDataGetTypes_GetTypes_SoapPortLocator();
 			WSFinanceDataGetTypes_GetTypes_SoapPortSoap_PortType port = locator.getWSFinanceDataGetTypes_GetTypes_SoapPortSoap(new URL(
 					endpoint));
@@ -48,7 +52,7 @@ public class TestClient {
 				System.out.println("description = " + type.getDescription());
 				System.out.println("type = " + type.getType());
 				System.out.println("type id = " + type.getType_id());
-			}
+			}*/
 			
 			System.out.println("STARTING STATE HANDLING");
 			WSFinanceDataGetState2_GetState_SoapPortLocator state_locator = new WSFinanceDataGetState2_GetState_SoapPortLocator();

@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatementBusinessBean.java,v 1.7 2006/02/27 15:15:32 palli Exp $
+ * $Id: FinancialStatementBusinessBean.java,v 1.8 2006/03/01 15:45:55 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -76,7 +76,7 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 				p.setAmount(state_record.getBalance().doubleValue());
 				p.setName(state_record.getDescription());
 				String dateString = state_record.getOldest_unpaid_date();
-				dateString.replace('T', ' ');
+				dateString = dateString.replace('T', ' ');
 				p.setLastDate(new IWTimestamp(dateString));
 				p.setEntryTypeId(Integer.parseInt(state_record.getType_id()));
 
@@ -143,7 +143,7 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 				s.setName(movement.getDescription());
 				s.setAmount(movement.getBalance().doubleValue());
 				String dateString = movement.getPayment_date();
-				dateString.replace('T', ' ');
+				dateString = dateString.replace('T', ' ');
 				s.setLastDate(new IWTimestamp(dateString));
 
 				c.add(s);
