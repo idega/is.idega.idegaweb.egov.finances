@@ -4,21 +4,12 @@ import is.idega.idegaweb.egov.finances.wsclient.GetStateRequest;
 import is.idega.idegaweb.egov.finances.wsclient.Getmovements_request;
 import is.idega.idegaweb.egov.finances.wsclient.Getmovements_responseMovements;
 import is.idega.idegaweb.egov.finances.wsclient.Getstate_responseRecords;
-import is.idega.idegaweb.egov.finances.wsclient.Gettypes_request;
-import is.idega.idegaweb.egov.finances.wsclient.Gettypes_response;
-import is.idega.idegaweb.egov.finances.wsclient.Gettypes_responseTypes;
 import is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortLocator;
 import is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_PortType;
 import is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortLocator;
 import is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_PortType;
-import is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetTypes_GetTypes_SoapPortLocator;
-import is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetTypes_GetTypes_SoapPortSoap_PortType;
 
 import java.net.URL;
-
-import org.apache.axis.EngineConfiguration;
-import org.apache.axis.EngineConfigurationFactory;
-import org.apache.axis.configuration.EngineConfigurationFactoryDefault;
 
 public class TestClient {
 
@@ -27,7 +18,7 @@ public class TestClient {
 	 */
 	public static void main(String[] args) {
 		try {
-			String endpoint = "http://213.167.155.148/WSFinanceDataGetTypes/WSFinanceDataGetTypes_GetTypes_SoapPort.asmx";
+			//String endpoint = "http://213.167.155.148/WSFinanceDataGetTypes/WSFinanceDataGetTypes_GetTypes_SoapPort.asmx";
 			String endpoint2 = "http://213.167.155.148/WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort.asmx";
 			String endpoint3 = "http://213.167.155.148/WSFinanceDataGetMovements/WSFinanceDataGetMovements_GetMovements_SoapPort.asmx";
 
