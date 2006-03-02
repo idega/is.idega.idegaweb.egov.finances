@@ -1,0 +1,13 @@
+amount=Amout
+amout=Amount
+back=Back
+date=Date
+description=Description
+due_date=Due date
+first_due_date=First due date
+from=From
+get=Get
+iw.component.is.idega.idegaweb.egov.finances.presentation.FinancialStatement.name=FinancialStatement
+payment_type=Payment type
+to=To
+total=Total
