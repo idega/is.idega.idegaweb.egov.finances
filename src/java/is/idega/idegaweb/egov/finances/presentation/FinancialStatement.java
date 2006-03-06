@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatement.java,v 1.4 2006/02/27 15:02:35 palli Exp $
+ * $Id: FinancialStatement.java,v 1.5 2006/03/06 12:32:08 laddi Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -47,7 +47,7 @@ public class FinancialStatement extends FinanceBlock {
 	
 	private String fixedCommuneNumber = null;
 	
-	private String tableStyleClass = "CaseTable";
+	private String tableStyleClass = "caseTable";
 	
 	private String stateEndPoint = null;
 	
@@ -67,10 +67,21 @@ public class FinancialStatement extends FinanceBlock {
 
 	private Layer getStatement(String communeNumber, String personalId, IWContext iwc) throws RemoteException {
 		Layer layer = new Layer(Layer.DIV);
+		layer.setStyleClass("caseElement");
+		layer.setID("financialStatement");
+		
 		Form form = new Form();
-		form.setId("financial_statement");
 		layer.add(form);
 
+		Layer headerLayer = new Layer(Layer.DIV);
+		headerLayer.setStyleClass("caseHeader");
+		layer.add(headerLayer);
+		
+		Layer headingLayer = new Layer(Layer.DIV);
+		headingLayer.setStyleClass("caseHeading");
+		headingLayer.add(new Text(iwrb.getLocalizedString("financial_statement", "Financial statement")));
+		headerLayer.add(headingLayer);
+		
 		Table2 table = new Table2();
 		table.setCellpadding(0);
 		table.setCellspacing(0);
@@ -78,9 +89,11 @@ public class FinancialStatement extends FinanceBlock {
 		table.setStyleClass(tableStyleClass);
 		table.setStyleClass("ruler");
 		form.add(table);
+		
 		TableRowGroup group = table.createHeaderRowGroup();
 		TableRow row = group.createRow();
 		row.setStyleClass("header");
+		
 		TableCell2 cell = row.createHeaderCell();
 		cell.setStyleClass("paymentType");
 		cell.setStyleClass("firstColumn");
@@ -128,7 +141,7 @@ public class FinancialStatement extends FinanceBlock {
 			cell = row.createCell();
 			cell.setStyleClass("firstDueDate");
 			cell.add(new Text(p.getLastDate().getLocaleDate(
-					iwc.getCurrentLocale())));
+					iwc.getCurrentLocale(), IWTimestamp.SHORT)));
 
 			if (selected != null && selected.equals(p.getName())) {
 				cell.setStyleClass("selected");
@@ -234,7 +247,7 @@ public class FinancialStatement extends FinanceBlock {
 					cell.setStyleClass("dueDate");
 					cell.setStyleClass("lastColumn");
 					cell.add(new Text(s.getLastDate().getLocaleDate(
-							iwc.getCurrentLocale())));
+							iwc.getCurrentLocale(), IWTimestamp.SHORT)));
 					sum += s.getAmount();
 				}
 				row = group.createRow();
