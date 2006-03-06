@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatement.java,v 1.5 2006/03/06 12:32:08 laddi Exp $
+ * $Id: FinancialStatement.java,v 1.6 2006/03/06 12:46:51 laddi Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -70,9 +70,6 @@ public class FinancialStatement extends FinanceBlock {
 		layer.setStyleClass("caseElement");
 		layer.setID("financialStatement");
 		
-		Form form = new Form();
-		layer.add(form);
-
 		Layer headerLayer = new Layer(Layer.DIV);
 		headerLayer.setStyleClass("caseHeader");
 		layer.add(headerLayer);
@@ -82,6 +79,9 @@ public class FinancialStatement extends FinanceBlock {
 		headingLayer.add(new Text(iwrb.getLocalizedString("financial_statement", "Financial statement")));
 		headerLayer.add(headingLayer);
 		
+		Form form = new Form();
+		layer.add(form);
+
 		Table2 table = new Table2();
 		table.setCellpadding(0);
 		table.setCellspacing(0);
@@ -151,6 +151,9 @@ public class FinancialStatement extends FinanceBlock {
 				String to = iwc.getParameter(PARAMETER_TO_DATE);
 				if (from != null) {
 					fromStamp = new IWTimestamp(from);
+				}
+				else {
+					fromStamp.addDays(-14);
 				}
 				if (to != null) {
 					toStamp = new IWTimestamp(to);
