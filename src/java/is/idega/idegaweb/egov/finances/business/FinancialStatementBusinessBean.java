@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatementBusinessBean.java,v 1.8 2006/03/01 15:45:55 palli Exp $
+ * $Id: FinancialStatementBusinessBean.java,v 1.9 2006/03/06 14:57:49 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -141,7 +141,7 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 				
 				StatementItem s = new StatementItem();
 				s.setName(movement.getDescription());
-				s.setAmount(movement.getBalance().doubleValue());
+				s.setAmount(movement.getMovement().doubleValue());
 				String dateString = movement.getPayment_date();
 				dateString = dateString.replace('T', ' ');
 				s.setLastDate(new IWTimestamp(dateString));
