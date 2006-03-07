@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatement.java,v 1.7 2006/03/06 12:47:54 laddi Exp $
+ * $Id: FinancialStatement.java,v 1.8 2006/03/07 11:44:23 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -153,7 +153,7 @@ public class FinancialStatement extends FinanceBlock {
 					fromStamp = new IWTimestamp(from);
 				}
 				else {
-					fromStamp.addDays(-14);
+					fromStamp.addYears(-1);
 				}
 				if (to != null) {
 					toStamp = new IWTimestamp(to);
