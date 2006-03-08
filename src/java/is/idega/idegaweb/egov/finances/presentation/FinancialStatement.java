@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatement.java,v 1.9 2006/03/08 19:18:17 laddi Exp $
+ * $Id: FinancialStatement.java,v 1.10 2006/03/08 19:25:21 laddi Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -15,6 +15,7 @@ import is.idega.idegaweb.egov.finances.data.StatementItem;
 
 import java.rmi.RemoteException;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -117,6 +118,8 @@ public class FinancialStatement extends FinanceBlock {
 		boolean odd = true;
 		String selected = iwc.getParameter(PARAMETER_PAYMENT_ITEM);
 
+		NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(iwc.getCurrentLocale());
+		
 		Collection coll = getBusiness(iwc).getPaymentItems(communeNumber, personalId, stateEndPoint);
 		Iterator iter = coll.iterator();
 		int iRow = 1;
@@ -142,7 +145,7 @@ public class FinancialStatement extends FinanceBlock {
 
 			cell = row.createCell();
 			cell.setStyleClass("amount");
-			cell.add(new Text(Double.toString(p.getAmount())));
+			cell.add(new Text(currencyFormat.format(p.getAmount())));
 
 			cell = row.createCell();
 			cell.setStyleClass("firstDueDate");
