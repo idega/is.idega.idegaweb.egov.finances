@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatement.java,v 1.8 2006/03/07 11:44:23 palli Exp $
+ * $Id: FinancialStatement.java,v 1.9 2006/03/08 19:18:17 laddi Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -52,6 +52,8 @@ public class FinancialStatement extends FinanceBlock {
 	private String stateEndPoint = null;
 	
 	private String movementsEndPoint = null;
+	
+	private int iMaxNumberOfEntries = -1;
 
 	protected void present(IWContext iwc) throws RemoteException {
 		if (fixedPersonalId == null) {
@@ -117,9 +119,13 @@ public class FinancialStatement extends FinanceBlock {
 
 		Collection coll = getBusiness(iwc).getPaymentItems(communeNumber, personalId, stateEndPoint);
 		Iterator iter = coll.iterator();
+		int iRow = 1;
 		while (iter.hasNext()) {
 			PaymentItem p = (PaymentItem) iter.next();
 			row = group.createRow();
+			if (iRow == 1) {
+				row.setStyleClass("firstRow");
+			}
 			if (odd) {
 				row.setStyleClass("oddRow");
 			} else {
@@ -278,6 +284,16 @@ public class FinancialStatement extends FinanceBlock {
 				}
 				odd = !odd;
 			}
+			
+			if (iMaxNumberOfEntries != -1 && iRow == iMaxNumberOfEntries) {
+				row.setStyleClass("lastRow");
+				break;
+			}
+			
+			if (!iter.hasNext()) {
+				row.setStyleClass("lastRow");
+			}
+			iRow++;
 		}
 
 		return layer;
@@ -310,5 +326,9 @@ public class FinancialStatement extends FinanceBlock {
 	
 	public void setMovementEndPoint(String endPoint) {
 		this.movementsEndPoint = endPoint;
+	}
+
+	public void setMaximumNumberOfEntries(int maxNumberOfEntries) {
+		iMaxNumberOfEntries = maxNumberOfEntries;
 	}
 }
