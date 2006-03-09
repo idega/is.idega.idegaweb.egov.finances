@@ -167,20 +167,10 @@ public class FinancialStatementMovements extends FinanceBlock {
 			cell.add(new Text(s.getName()));
 			cell = row.createCell();
 			cell.setStyleClass("amount");
-
-			if (s.getAmount() == 0.0d) {
-				cell.add(new Text("-"));
-			} else {
-				cell.add(new Text(currencyFormat.format(s.getAmount())));
-			}
+			cell.add(new Text(currencyFormat.format(s.getAmount())));
 			cell = row.createCell();
 			cell.setStyleClass("balance");
-
-			if (s.getBalance() == 0.0d) {
-				cell.add(new Text("-"));
-			} else {
-				cell.add(new Text(currencyFormat.format(s.getBalance())));
-			}
+			cell.add(new Text(currencyFormat.format(s.getBalance())));
 			cell = row.createCell();
 			cell.setStyleClass("dueDate");
 			cell.setStyleClass("lastColumn");
@@ -189,6 +179,9 @@ public class FinancialStatementMovements extends FinanceBlock {
 			sum += s.getAmount();
 			sumBalance += s.getBalance();
 		}
+		
+		group = table.createFooterRowGroup();
+		
 		row = group.createRow();
 		if (odd) {
 			row.setStyleClass("oddRow");
@@ -217,7 +210,7 @@ public class FinancialStatementMovements extends FinanceBlock {
 		row.setStyleClass("lastRow");
 
 		Layer l = new Layer(Layer.DIV);
-		l.setStyleClass("dateForm");
+		l.setStyleClass("formSection");
 		layer.add(l);
 
 		Form form = new Form();
@@ -225,8 +218,10 @@ public class FinancialStatementMovements extends FinanceBlock {
 		// FORM part
 		DateInput inp = new DateInput(PARAMETER_FROM_DATE, true);
 		inp.setDate(fromStamp.getDate());
+		inp.setStyleClass("dateInput");
 		DateInput toInp = new DateInput(PARAMETER_TO_DATE, true);
 		toInp.setDate(toStamp.getDate());
+		toInp.setStyleClass("dateInput");
 
 		Link backLink = new Link(iwrb.getLocalizedString("back", "Back"));
 		if (backPage != null) {
