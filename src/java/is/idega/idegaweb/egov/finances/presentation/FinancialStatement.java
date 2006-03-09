@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatement.java,v 1.10 2006/03/08 19:25:21 laddi Exp $
+ * $Id: FinancialStatement.java,v 1.11 2006/03/09 12:07:50 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -11,10 +11,8 @@ package is.idega.idegaweb.egov.finances.presentation;
 
 import is.idega.idegaweb.egov.finances.business.FinancialStatementBusiness;
 import is.idega.idegaweb.egov.finances.data.PaymentItem;
-import is.idega.idegaweb.egov.finances.data.StatementItem;
 
 import java.rmi.RemoteException;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.Iterator;
@@ -22,6 +20,7 @@ import java.util.Iterator;
 import com.idega.business.IBOLookup;
 import com.idega.business.IBOLookupException;
 import com.idega.business.IBORuntimeException;
+import com.idega.core.builder.data.ICPage;
 import com.idega.presentation.IWContext;
 import com.idega.presentation.Layer;
 import com.idega.presentation.Table2;
@@ -30,20 +29,20 @@ import com.idega.presentation.TableRow;
 import com.idega.presentation.TableRowGroup;
 import com.idega.presentation.text.Link;
 import com.idega.presentation.text.Text;
-import com.idega.presentation.ui.BackButton;
-import com.idega.presentation.ui.DateInput;
-import com.idega.presentation.ui.Form;
-import com.idega.presentation.ui.SubmitButton;
 import com.idega.util.IWTimestamp;
 
 public class FinancialStatement extends FinanceBlock {
 
-	private static String PARAMETER_PAYMENT_ITEM = "paym_id";
+	protected static final String PARAMETER_PAYMENT_ITEM_NAME = "fs_payment_item_name";
 
-	private static String PARAMETER_FROM_DATE = "fromDate";
+	protected static final String PARAMETER_PAYMENT_ITEM_AMOUNT = "fs_payment_item_amount";
 
-	private static String PARAMETER_TO_DATE = "toDate";
+	protected static final String PARAMETER_PAYMENT_ITEM_TYPE_ID = "fs_payment_item_type_id";
 	
+	protected static final String PARAMETER_COMMUNE_ID = "fs_commune_id";
+	
+	protected static final String PARAMETER_PERSONAL_ID = "fs_personal_id";
+
 	private String fixedPersonalId = null;
 	
 	private String fixedCommuneNumber = null;
@@ -52,7 +51,8 @@ public class FinancialStatement extends FinanceBlock {
 	
 	private String stateEndPoint = null;
 	
-	private String movementsEndPoint = null;
+	private ICPage page = null;
+	
 	
 	private int iMaxNumberOfEntries = -1;
 
@@ -82,16 +82,13 @@ public class FinancialStatement extends FinanceBlock {
 		headingLayer.add(new Text(iwrb.getLocalizedString("financial_statement", "Financial statement")));
 		headerLayer.add(headingLayer);
 		
-		Form form = new Form();
-		layer.add(form);
-
 		Table2 table = new Table2();
 		table.setCellpadding(0);
 		table.setCellspacing(0);
 		table.setWidth("100%");
 		table.setStyleClass(tableStyleClass);
 		table.setStyleClass("ruler");
-		form.add(table);
+		layer.add(table);
 		
 		TableRowGroup group = table.createHeaderRowGroup();
 		TableRow row = group.createRow();
@@ -104,8 +101,8 @@ public class FinancialStatement extends FinanceBlock {
 				"Payment type")));
 
 		cell = row.createHeaderCell();
-		cell.setStyleClass("amount");
-		cell.add(new Text(iwrb.getLocalizedString("amount", "Amount")));
+		cell.setStyleClass("balance");
+		cell.add(new Text(iwrb.getLocalizedString("balance", "Balance") + " (" + IWTimestamp.RightNow().getDateString("dd.MM.yy") + ")"));
 
 		cell = row.createHeaderCell();
 		cell.setStyleClass("firstDueDate");
@@ -116,10 +113,11 @@ public class FinancialStatement extends FinanceBlock {
 		group = table.createBodyRowGroup();
 
 		boolean odd = true;
-		String selected = iwc.getParameter(PARAMETER_PAYMENT_ITEM);
-
 		NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(iwc.getCurrentLocale());
-		
+		currencyFormat.setGroupingUsed(true);
+		currencyFormat.setMaximumFractionDigits(0);
+		currencyFormat.setMinimumFractionDigits(0);
+
 		Collection coll = getBusiness(iwc).getPaymentItems(communeNumber, personalId, stateEndPoint);
 		Iterator iter = coll.iterator();
 		int iRow = 1;
@@ -137,14 +135,22 @@ public class FinancialStatement extends FinanceBlock {
 			odd = !odd;
 
 			Link link = new Link(new Text(p.getName()));
-			link.addParameter(PARAMETER_PAYMENT_ITEM, p.getName());
+			link.addParameter(PARAMETER_PAYMENT_ITEM_TYPE_ID, p.getEntryTypeId());
+			link.addParameter(PARAMETER_COMMUNE_ID, communeNumber);
+			link.addParameter(PARAMETER_PERSONAL_ID, personalId);
+			link.addParameter(PARAMETER_PAYMENT_ITEM_NAME, p.getName());
+			link.addParameter(PARAMETER_PAYMENT_ITEM_AMOUNT, Double.toString(p.getAmount()));
+			if (page != null) {
+				link.setPage(page);
+			}
+			
 			cell = row.createCell();
 			cell.setStyleClass("paymentType");
 			cell.setStyleClass("firstColumn");
 			cell.add(link);
 
 			cell = row.createCell();
-			cell.setStyleClass("amount");
+			cell.setStyleClass("balance");
 			cell.add(new Text(currencyFormat.format(p.getAmount())));
 
 			cell = row.createCell();
@@ -152,141 +158,6 @@ public class FinancialStatement extends FinanceBlock {
 			cell.add(new Text(p.getLastDate().getLocaleDate(
 					iwc.getCurrentLocale(), IWTimestamp.SHORT)));
 
-			if (selected != null && selected.equals(p.getName())) {
-				cell.setStyleClass("selected");
-				IWTimestamp fromStamp = new IWTimestamp();
-				IWTimestamp toStamp = new IWTimestamp();
-				String from = iwc.getParameter(PARAMETER_FROM_DATE);
-				String to = iwc.getParameter(PARAMETER_TO_DATE);
-				if (from != null) {
-					fromStamp = new IWTimestamp(from);
-				}
-				else {
-					fromStamp.addYears(-1);
-				}
-				if (to != null) {
-					toStamp = new IWTimestamp(to);
-				}
-
-				Collection items = getBusiness(iwc).getStatementItems(communeNumber, personalId,
-						p, fromStamp, toStamp, movementsEndPoint);
-				Iterator iIter = items.iterator();
-
-				row = group.createRow();
-				if (odd) {
-					row.setStyleClass("oddRow");
-				} else {
-					row.setStyleClass("evenRow");
-				}
-				odd = !odd;
-				cell = row.createCell();
-				cell.setColumnSpan(3);
-
-				Layer l = new Layer(Layer.DIV);
-				l.setStyleClass("dateForm");
-				cell.add(l);
-				// FORM part
-				DateInput inp = new DateInput(PARAMETER_FROM_DATE, true);
-				inp.setDate(fromStamp.getDate());
-				DateInput toInp = new DateInput(PARAMETER_TO_DATE, true);
-				toInp.setDate(toStamp.getDate());
-
-				l.add(new BackButton(iwrb.getLocalizedString("back", "Back")));
-				l.add(new Text(p.getName()));
-				l.add(new Text(iwrb.getLocalizedString("date", "Date") + "."));
-				l.add(new Text(iwrb.getLocalizedString("from", "From")));
-				l.add(inp);
-				l.add(new Text(iwrb.getLocalizedString("to", "To")));
-				l.add(toInp);
-				l.add(new SubmitButton(iwrb.getLocalizedString("get", "Get"),
-						PARAMETER_PAYMENT_ITEM, p.getName()));
-				// formpart
-
-				double sum = 0;
-				row = group.createRow();
-				if (odd) {
-					row.setStyleClass("oddRow");
-				} else {
-					row.setStyleClass("evenRow");
-				}
-				odd = !odd;
-				cell = row.createCell();
-				cell.setStyleClass("description");
-				cell.setStyleClass("firstColumn");
-				cell.setStyleClass("statementHeader");
-				cell.add(new Text(iwrb.getLocalizedString("description",
-						"Description")));
-				cell = row.createCell();
-				cell.setStyleClass("statementHeader");
-				cell.setStyleClass("amount");
-				cell.add(new Text(iwrb.getLocalizedString("amount", "Amount")));
-				cell = row.createCell();
-				cell.setStyleClass("statementHeader");
-				cell.setStyleClass("dueDate");
-				cell.setStyleClass("lastColumn");
-				cell.add(new Text(iwrb.getLocalizedString("due_date",
-						"Due date")));
-
-				DecimalFormat format = new DecimalFormat("#,###.##");
-				
-				while (iIter.hasNext()) {
-					StatementItem s = (StatementItem) iIter.next();
-					row = group.createRow();
-					if (odd) {
-						row.setStyleClass("oddRow");
-					} else {
-						row.setStyleClass("evenRow");
-					}
-					odd = !odd;
-					cell = row.createCell();
-					cell.setStyleClass("description");
-					cell.setStyleClass("firstColumn");
-					cell.setStyleClass("statement");
-					cell.add(new Text(s.getName()));
-					cell = row.createCell();
-					cell.setStyleClass("statement");
-					cell.setStyleClass("amount");
-					
-					if (s.getAmount() == 0.0d) {
-						cell.add(new Text("-"));
-					} else {
-						cell.add(new Text(format.format(s.getAmount()) + ".-"));
-					}
-					cell = row.createCell();
-					cell.setStyleClass("statement");
-					cell.setStyleClass("dueDate");
-					cell.setStyleClass("lastColumn");
-					cell.add(new Text(s.getLastDate().getLocaleDate(
-							iwc.getCurrentLocale(), IWTimestamp.SHORT)));
-					sum += s.getAmount();
-				}
-				row = group.createRow();
-				if (odd) {
-					row.setStyleClass("oddRow");
-				} else {
-					row.setStyleClass("evenRow");
-				}
-				odd = !odd;
-				cell = row.createCell();
-				row.setStyleClass("total");
-				cell.setStyleClass("firstColumn");
-				cell.setStyleClass("statement");
-				cell.add(new Text(iwrb.getLocalizedString("total", "Total")));
-				cell = row.createCell();
-				cell.setStyleClass("statement");
-				cell.setStyleClass("amount");
-				cell.setStyleClass("lastColumn");
-				cell.add(new Text(format.format(sum)));
-				cell = row.createCell();
-
-				row = group.createRow();
-				if (odd) {
-					row.setStyleClass("oddRow");
-				} else {
-					row.setStyleClass("evenRow");
-				}
-				odd = !odd;
-			}
 			
 			if (iMaxNumberOfEntries != -1 && iRow == iMaxNumberOfEntries) {
 				row.setStyleClass("lastRow");
@@ -327,11 +198,11 @@ public class FinancialStatement extends FinanceBlock {
 		this.stateEndPoint = endPoint;
 	}
 	
-	public void setMovementEndPoint(String endPoint) {
-		this.movementsEndPoint = endPoint;
-	}
-
 	public void setMaximumNumberOfEntries(int maxNumberOfEntries) {
 		iMaxNumberOfEntries = maxNumberOfEntries;
+	}
+	
+	public void setResponsePage(ICPage page) {
+		this.page = page;
 	}
 }

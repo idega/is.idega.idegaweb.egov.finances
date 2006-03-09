@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatementBusinessBean.java,v 1.9 2006/03/06 14:57:49 palli Exp $
+ * $Id: FinancialStatementBusinessBean.java,v 1.10 2006/03/09 12:07:50 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -47,17 +47,6 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 			String endpoint) {
 		Collection c = new Vector();
 
-		/*PaymentItem p1 = new PaymentItem();
-		p1.setName("Test type");
-		p1.setAmount(100.0d);
-		p1.setEntryTypeId(1);
-		p1.setLastDate(new IWTimestamp());
-		
-		c.add(p1);
-		
-		return c;*/
-
-		
 		if (endpoint == null) {
 			endpoint = PAYMENT_ITEMS_ENDPOINT;
 		}
@@ -81,16 +70,6 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 				p.setEntryTypeId(Integer.parseInt(state_record.getType_id()));
 
 				c.add(p);
-
-				// System.out.println("balance = " + state_record.getBalance());
-				// System.out.println("description = " +
-				// state_record.getDescription());
-				// System.out.println("oldest unpaid date = " +
-				// state_record.getOldest_unpaid_date());
-				// System.out.println("sf_id = " + state_record.getSf_id());
-				// System.out.println("ssn = " +
-				// state_record.getSocial_security());
-				// System.out.println("type = " + state_record.getType_id());
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -108,22 +87,6 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 			IWTimestamp toStamp, String endpoint) {
 		Collection c = new Vector();
 
-/*		StatementItem s1 = new StatementItem();
-		s1.setName("Statement type 1");
-		s1.setAmount(50.0d);
-		s1.setLastDate(new IWTimestamp());
-		
-		StatementItem s2 = new StatementItem();
-		s2.setName("Statement type 1");
-		s2.setAmount(50.0d);
-		s2.setLastDate(new IWTimestamp());
-		
-		c.add(s1);
-		c.add(s2);
-		
-		return c;*/
-		
-		
 		if (endpoint == null) {
 			endpoint = MOVEMENTS_ITEMS_ENDPOINT;
 		}
@@ -142,24 +105,12 @@ public class FinancialStatementBusinessBean extends IBOServiceBean implements
 				StatementItem s = new StatementItem();
 				s.setName(movement.getDescription());
 				s.setAmount(movement.getMovement().doubleValue());
+				s.setBalance(movement.getBalance().doubleValue());
 				String dateString = movement.getPayment_date();
 				dateString = dateString.replace('T', ' ');
 				s.setLastDate(new IWTimestamp(dateString));
 
 				c.add(s);
-				
-//				System.out.println("balance = " + movement.getBalance());
-//				System.out
-//						.println("description = " + movement.getDescription());
-//				System.out.println("movement = " + movement.getMovement());
-//				System.out.println("payment_date = "
-//						+ movement.getPayment_date());
-//				System.out.println("publish_date = "
-//						+ movement.getPublish_date());
-//				System.out.println("sf_id = " + movement.getSf_id());
-//				System.out.println("ssn = " + movement.getSocial_security());
-//				System.out.println("type = " + movement.getType());
-//				System.out.println("type id = " + movement.getType_id());
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

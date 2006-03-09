@@ -1,5 +1,5 @@
 /*
- * $Id: StatementItem.java,v 1.2 2006/02/27 14:03:12 palli Exp $
+ * $Id: StatementItem.java,v 1.3 2006/03/09 12:07:50 palli Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -16,6 +16,8 @@ public class StatementItem {
 	private String name;
 
 	private double amount;
+	
+	private double balance;
 
 	private IWTimestamp lastDate;
 
@@ -25,6 +27,14 @@ public class StatementItem {
 
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+	
+	public double getBalance() {
+		return balance;
+	}
+	
+	public void setBalance(double balance) {
+		this.balance = balance;
 	}
 
 	public IWTimestamp getLastDate() {
