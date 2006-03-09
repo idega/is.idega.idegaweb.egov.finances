@@ -85,15 +85,11 @@ public class FinancialStatementMovements extends FinanceBlock {
 
 		Layer headingLayer = new Layer(Layer.DIV);
 		headingLayer.setStyleClass("caseHeading");
-		headingLayer.add(new Text(iwrb.getLocalizedString(
-				"financial_statement_movements",
-				"Financial statement movements")));
+		headingLayer.add(new Text(item.getName()));
 		headerLayer.add(headingLayer);
 
 		Layer headingInfoLayer = new Layer(Layer.DIV);
 		headingInfoLayer.setStyleClass("caseInfoHeading");
-		headingInfoLayer.add(new Text(item.getName()));
-		headingInfoLayer.add(" ");
 		headingInfoLayer.add(new Text(iwrb.getLocalizedString("balance", "Balance") + " (" + IWTimestamp.RightNow().getDateString("dd.MM.yy") + ") : "));
 		headingInfoLayer.add(currencyFormat.format(item.getAmount()));
 		headerLayer.add(headingInfoLayer);
