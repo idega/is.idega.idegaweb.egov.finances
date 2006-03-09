@@ -90,7 +90,7 @@ public class FinancialStatementMovements extends FinanceBlock {
 
 		Layer headingInfoLayer = new Layer(Layer.DIV);
 		headingInfoLayer.setStyleClass("caseInfoHeading");
-		headingInfoLayer.add(new Text(iwrb.getLocalizedString("balance", "Balance") + " (" + IWTimestamp.RightNow().getDateString("dd.MM.yy") + ") : "));
+		headingInfoLayer.add(new Text(iwrb.getLocalizedString("balance", "Balance") + " (" + IWTimestamp.RightNow().getDateString("dd.MM.yyyy") + ") : "));
 		headingInfoLayer.add(currencyFormat.format(item.getAmount()));
 		headerLayer.add(headingInfoLayer);
 		
