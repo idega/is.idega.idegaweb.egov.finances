@@ -19,10 +19,11 @@ import com.idega.presentation.Table2;
 import com.idega.presentation.TableCell2;
 import com.idega.presentation.TableRow;
 import com.idega.presentation.TableRowGroup;
-import com.idega.presentation.text.Link;
 import com.idega.presentation.text.Text;
 import com.idega.presentation.ui.DateInput;
 import com.idega.presentation.ui.Form;
+import com.idega.presentation.ui.GenericButton;
+import com.idega.presentation.ui.Label;
 import com.idega.presentation.ui.Parameter;
 import com.idega.presentation.ui.SubmitButton;
 import com.idega.util.IWTimestamp;
@@ -97,6 +98,64 @@ public class FinancialStatementMovements extends FinanceBlock {
 		headingInfoLayer.add(currencyFormat.format(item.getAmount()));
 		headerLayer.add(headingInfoLayer);
 		
+		IWTimestamp fromStamp = new IWTimestamp();
+		IWTimestamp toStamp = new IWTimestamp();
+		String from = iwc.getParameter(PARAMETER_FROM_DATE);
+		String to = iwc.getParameter(PARAMETER_TO_DATE);
+		if (from != null) {
+			fromStamp = new IWTimestamp(from);
+		} else {
+			fromStamp.addYears(-1);
+		}
+		if (to != null) {
+			toStamp = new IWTimestamp(to);
+		}
+
+		Form form = new Form();
+		layer.add(form);
+
+		Layer section = new Layer(Layer.DIV);
+		section.setStyleClass("formSection");
+		form.add(section);
+
+		// FORM part
+		DateInput inp = new DateInput(PARAMETER_FROM_DATE, true);
+		inp.setDate(fromStamp.getDate());
+		inp.setStyleClass("dateInput");
+		DateInput toInp = new DateInput(PARAMETER_TO_DATE, true);
+		toInp.setDate(toStamp.getDate());
+		toInp.setStyleClass("dateInput");
+		
+		Layer formItem = new Layer(Layer.DIV);
+		formItem.setStyleClass("formItem");
+		Label label = new Label();
+		label.add(new Text(iwrb.getLocalizedString("from", "From")));
+		formItem.add(label);
+		formItem.add(inp);
+		section.add(formItem);
+
+		formItem = new Layer(Layer.DIV);
+		formItem.setStyleClass("formItem");
+		label = new Label();
+		label.add(new Text(iwrb.getLocalizedString("to", "To")));
+		formItem.add(label);
+		formItem.add(toInp);
+		section.add(formItem);
+
+		SubmitButton button = new SubmitButton(iwrb.getLocalizedString("get", "Get"));
+		button.setStyleClass("indentedButton");
+		section.add(button);
+		
+		Layer clearLayer = new Layer(Layer.DIV);
+		clearLayer.setStyleClass("Clear");
+		section.add(clearLayer);
+		
+		form.add(new Parameter(PARAMETER_PAYMENT_ITEM_TYPE_ID, Integer.toString(item.getEntryTypeId())));
+		form.add(new Parameter(PARAMETER_COMMUNE_ID, communeNumber));
+		form.add(new Parameter(PARAMETER_PERSONAL_ID, personalId));
+		form.add(new Parameter(PARAMETER_PAYMENT_ITEM_NAME, item.getName()));
+		form.add(new Parameter(PARAMETER_PAYMENT_ITEM_AMOUNT, Double.toString(item.getAmount())));
+
 		Table2 table = new Table2();
 		table.setCellpadding(0);
 		table.setCellspacing(0);
@@ -132,19 +191,6 @@ public class FinancialStatementMovements extends FinanceBlock {
 
 		boolean odd = true;
 
-		IWTimestamp fromStamp = new IWTimestamp();
-		IWTimestamp toStamp = new IWTimestamp();
-		String from = iwc.getParameter(PARAMETER_FROM_DATE);
-		String to = iwc.getParameter(PARAMETER_TO_DATE);
-		if (from != null) {
-			fromStamp = new IWTimestamp(from);
-		} else {
-			fromStamp.addYears(-1);
-		}
-		if (to != null) {
-			toStamp = new IWTimestamp(to);
-		}
-
 		Collection items = getBusiness(iwc).getStatementItems(communeNumber,
 				personalId, item, fromStamp, toStamp, movementsEndPoint);
 		Iterator iIter = items.iterator();
@@ -155,22 +201,30 @@ public class FinancialStatementMovements extends FinanceBlock {
 		while (iIter.hasNext()) {
 			StatementItem s = (StatementItem) iIter.next();
 			row = group.createRow();
+			if (!iIter.hasNext()) {
+				row.setStyleClass("lastRow");
+			}
 			if (odd) {
 				row.setStyleClass("oddRow");
-			} else {
+			}
+			else {
 				row.setStyleClass("evenRow");
 			}
 			odd = !odd;
+			
 			cell = row.createCell();
 			cell.setStyleClass("description");
 			cell.setStyleClass("firstColumn");
 			cell.add(new Text(s.getName()));
+
 			cell = row.createCell();
 			cell.setStyleClass("amount");
 			cell.add(new Text(currencyFormat.format(s.getAmount())));
+			
 			cell = row.createCell();
 			cell.setStyleClass("balance");
 			cell.add(new Text(currencyFormat.format(s.getBalance())));
+			
 			cell = row.createCell();
 			cell.setStyleClass("dueDate");
 			cell.setStyleClass("lastColumn");
@@ -183,12 +237,6 @@ public class FinancialStatementMovements extends FinanceBlock {
 		group = table.createFooterRowGroup();
 		
 		row = group.createRow();
-		if (odd) {
-			row.setStyleClass("oddRow");
-		} else {
-			row.setStyleClass("evenRow");
-		}
-		odd = !odd;
 		cell = row.createCell();
 		row.setStyleClass("total");
 		cell.setStyleClass("firstColumn");
@@ -201,49 +249,15 @@ public class FinancialStatementMovements extends FinanceBlock {
 		cell.setStyleClass("lastColumn");
 		cell.add(new Text(currencyFormat.format(sumBalance)));
 
-		row = group.createRow();
-		if (odd) {
-			row.setStyleClass("oddRow");
-		} else {
-			row.setStyleClass("evenRow");
-		}
-		row.setStyleClass("lastRow");
-
-		Layer l = new Layer(Layer.DIV);
-		l.setStyleClass("formSection");
-		layer.add(l);
-
-		Form form = new Form();
-		l.add(form);
-		// FORM part
-		DateInput inp = new DateInput(PARAMETER_FROM_DATE, true);
-		inp.setDate(fromStamp.getDate());
-		inp.setStyleClass("dateInput");
-		DateInput toInp = new DateInput(PARAMETER_TO_DATE, true);
-		toInp.setDate(toStamp.getDate());
-		toInp.setStyleClass("dateInput");
-
-		Link backLink = new Link(iwrb.getLocalizedString("back", "Back"));
+		Layer buttonLayer = new Layer(Layer.DIV);
+		buttonLayer.setStyleClass("buttonLayer");
+		layer.add(buttonLayer);
+		
+		GenericButton backLink = new GenericButton("back", iwrb.getLocalizedString("back", "Back"));
 		if (backPage != null) {
-			backLink.setPage(backPage);
+			backLink.setPageToOpen(backPage);
 		}
-		
-		form.add(backLink);
-		form.add(new Text(item.getName()));
-		form.add(new Text(iwrb.getLocalizedString("date", "Date") + "."));
-		form.add(new Text(iwrb.getLocalizedString("from", "From")));
-		form.add(inp);
-		form.add(new Text(iwrb.getLocalizedString("to", "To")));
-		form.add(toInp);
-		form.add(new SubmitButton(iwrb.getLocalizedString("get", "Get")));
-		
-		form.add(new Parameter(PARAMETER_PAYMENT_ITEM_TYPE_ID, Integer.toString(item.getEntryTypeId())));
-		form.add(new Parameter(PARAMETER_COMMUNE_ID, communeNumber));
-		form.add(new Parameter(PARAMETER_PERSONAL_ID, personalId));
-		form.add(new Parameter(PARAMETER_PAYMENT_ITEM_NAME, item.getName()));
-		form.add(new Parameter(PARAMETER_PAYMENT_ITEM_AMOUNT, Double.toString(item.getAmount())));
-
-		//formpart
+		buttonLayer.add(backLink);
 		
 		return layer;
 	}
