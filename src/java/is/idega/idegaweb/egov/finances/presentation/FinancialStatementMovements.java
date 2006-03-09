@@ -241,6 +241,7 @@ public class FinancialStatementMovements extends FinanceBlock {
 		cell.setStyleClass("amount");
 		cell.add(new Text(currencyFormat.format(sum)));
 		cell = row.createCell();
+		cell.setColumnSpan(2);
 		cell.setStyleClass("balance");
 		cell.setStyleClass("lastColumn");
 		cell.add(new Text(currencyFormat.format(sumBalance)));
