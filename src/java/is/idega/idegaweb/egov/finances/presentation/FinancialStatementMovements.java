@@ -109,6 +109,10 @@ public class FinancialStatementMovements extends FinanceBlock {
 
 		Form form = new Form();
 		layer.add(form);
+		
+		Layer helpLayer = new Layer(Layer.DIV);
+		helpLayer.setStyleClass("helpLayer");
+		helpLayer.add(new Text(iwrb.getLocalizedString("financial_movements.helper_text", "Help text...")));
 
 		Layer section = new Layer(Layer.DIV);
 		section.setStyleClass("formSection");
