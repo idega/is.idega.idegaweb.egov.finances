@@ -5,6 +5,7 @@ balance=Balance
 date=Date
 description=Description
 due_date=Due date
+financial_movements.helper_text=Help text...
 financial_statement=Financial statement
 first_due_date=First due date
 from=From
