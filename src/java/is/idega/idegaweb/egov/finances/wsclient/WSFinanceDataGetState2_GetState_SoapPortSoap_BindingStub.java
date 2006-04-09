@@ -69,27 +69,27 @@ public class WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub extends or
 //            java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
 //            java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
             qName = new javax.xml.namespace.QName("http://WSGetFinanceData.GetStateRequest", "GetStateRequest");
-            cachedSerQNames.add(qName);
+            this.cachedSerQNames.add(qName);
             cls = is.idega.idegaweb.egov.finances.wsclient.GetStateRequest.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+            this.cachedSerClasses.add(cls);
+            this.cachedSerFactories.add(beansf);
+            this.cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("http://WSGetFinanceData.GetStateResponse", "getstate_response");
-            cachedSerQNames.add(qName);
+            this.cachedSerQNames.add(qName);
             cls = is.idega.idegaweb.egov.finances.wsclient.Getstate_responseRecords[].class;
-            cachedSerClasses.add(cls);
+            this.cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("http://WSGetFinanceData.GetStateResponse", "getstate_responseRecords");
             qName2 = new javax.xml.namespace.QName("http://WSGetFinanceData.GetStateResponse", "records");
-            cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
-            cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
+            this.cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
+            this.cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
             qName = new javax.xml.namespace.QName("http://WSGetFinanceData.GetStateResponse", "getstate_responseRecords");
-            cachedSerQNames.add(qName);
+            this.cachedSerQNames.add(qName);
             cls = is.idega.idegaweb.egov.finances.wsclient.Getstate_responseRecords.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+            this.cachedSerClasses.add(cls);
+            this.cachedSerFactories.add(beansf);
+            this.cachedDeserFactories.add(beandf);
 
     }
 
@@ -128,23 +128,23 @@ public class WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub extends or
                 if (firstCall()) {
                     // must set encoding style before registering serializers
                     _call.setEncodingStyle(null);
-                    for (int i = 0; i < cachedSerFactories.size(); ++i) {
-                        java.lang.Class cls = (java.lang.Class) cachedSerClasses.get(i);
+                    for (int i = 0; i < this.cachedSerFactories.size(); ++i) {
+                        java.lang.Class cls = (java.lang.Class) this.cachedSerClasses.get(i);
                         javax.xml.namespace.QName qName =
-                                (javax.xml.namespace.QName) cachedSerQNames.get(i);
-                        java.lang.Object x = cachedSerFactories.get(i);
+                                (javax.xml.namespace.QName) this.cachedSerQNames.get(i);
+                        java.lang.Object x = this.cachedSerFactories.get(i);
                         if (x instanceof Class) {
                             java.lang.Class sf = (java.lang.Class)
-                                 cachedSerFactories.get(i);
+                                 this.cachedSerFactories.get(i);
                             java.lang.Class df = (java.lang.Class)
-                                 cachedDeserFactories.get(i);
+                                 this.cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
                         }
                         else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
                             org.apache.axis.encoding.SerializerFactory sf = (org.apache.axis.encoding.SerializerFactory)
-                                 cachedSerFactories.get(i);
+                                 this.cachedSerFactories.get(i);
                             org.apache.axis.encoding.DeserializerFactory df = (org.apache.axis.encoding.DeserializerFactory)
-                                 cachedDeserFactories.get(i);
+                                 this.cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
                         }
                     }

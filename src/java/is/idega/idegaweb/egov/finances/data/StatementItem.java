@@ -1,5 +1,5 @@
 /*
- * $Id: StatementItem.java,v 1.3 2006/03/09 12:07:50 palli Exp $
+ * $Id: StatementItem.java,v 1.4 2006/04/09 12:00:08 laddi Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -22,7 +22,7 @@ public class StatementItem {
 	private IWTimestamp lastDate;
 
 	public double getAmount() {
-		return amount;
+		return this.amount;
 	}
 
 	public void setAmount(double amount) {
@@ -30,7 +30,7 @@ public class StatementItem {
 	}
 	
 	public double getBalance() {
-		return balance;
+		return this.balance;
 	}
 	
 	public void setBalance(double balance) {
@@ -38,7 +38,7 @@ public class StatementItem {
 	}
 
 	public IWTimestamp getLastDate() {
-		return lastDate;
+		return this.lastDate;
 	}
 
 	public void setLastDate(IWTimestamp lastDate) {
@@ -46,7 +46,7 @@ public class StatementItem {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {

@@ -14,7 +14,7 @@ public class EntryType {
 	}
 
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	public void setDescription(String description) {
@@ -22,7 +22,7 @@ public class EntryType {
 	}
 
 	public String getType() {
-		return type;
+		return this.type;
 	}
 
 	public void setType(String type) {
@@ -30,7 +30,7 @@ public class EntryType {
 	}
 
 	public int getTypeId() {
-		return typeId;
+		return this.typeId;
 	}
 
 	public void setTypeId(int typeId) {

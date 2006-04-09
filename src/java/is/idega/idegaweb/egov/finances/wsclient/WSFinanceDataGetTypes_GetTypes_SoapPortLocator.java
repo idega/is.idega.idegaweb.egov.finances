@@ -30,24 +30,24 @@ public class WSFinanceDataGetTypes_GetTypes_SoapPortLocator extends org.apache.a
     private java.lang.String WSFinanceDataGetTypes_GetTypes_SoapPortSoap_address = "http://213.167.155.148/WSFinanceDataGetTypes/WSFinanceDataGetTypes_GetTypes_SoapPort.asmx";
 
     public java.lang.String getWSFinanceDataGetTypes_GetTypes_SoapPortSoapAddress() {
-        return WSFinanceDataGetTypes_GetTypes_SoapPortSoap_address;
+        return this.WSFinanceDataGetTypes_GetTypes_SoapPortSoap_address;
     }
 
     // The WSDD service name defaults to the port name.
     private java.lang.String WSFinanceDataGetTypes_GetTypes_SoapPortSoapWSDDServiceName = "WSFinanceDataGetTypes_GetTypes_SoapPortSoap";
 
     public java.lang.String getWSFinanceDataGetTypes_GetTypes_SoapPortSoapWSDDServiceName() {
-        return WSFinanceDataGetTypes_GetTypes_SoapPortSoapWSDDServiceName;
+        return this.WSFinanceDataGetTypes_GetTypes_SoapPortSoapWSDDServiceName;
     }
 
     public void setWSFinanceDataGetTypes_GetTypes_SoapPortSoapWSDDServiceName(java.lang.String name) {
-        WSFinanceDataGetTypes_GetTypes_SoapPortSoapWSDDServiceName = name;
+        this.WSFinanceDataGetTypes_GetTypes_SoapPortSoapWSDDServiceName = name;
     }
 
     public is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetTypes_GetTypes_SoapPortSoap_PortType getWSFinanceDataGetTypes_GetTypes_SoapPortSoap() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
-            endpoint = new java.net.URL(WSFinanceDataGetTypes_GetTypes_SoapPortSoap_address);
+            endpoint = new java.net.URL(this.WSFinanceDataGetTypes_GetTypes_SoapPortSoap_address);
         }
         catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
@@ -67,7 +67,7 @@ public class WSFinanceDataGetTypes_GetTypes_SoapPortLocator extends org.apache.a
     }
 
     public void setWSFinanceDataGetTypes_GetTypes_SoapPortSoapEndpointAddress(java.lang.String address) {
-        WSFinanceDataGetTypes_GetTypes_SoapPortSoap_address = address;
+        this.WSFinanceDataGetTypes_GetTypes_SoapPortSoap_address = address;
     }
 
     /**
@@ -78,7 +78,7 @@ public class WSFinanceDataGetTypes_GetTypes_SoapPortLocator extends org.apache.a
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
             if (is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetTypes_GetTypes_SoapPortSoap_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
-                is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetTypes_GetTypes_SoapPortSoap_BindingStub _stub = new is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetTypes_GetTypes_SoapPortSoap_BindingStub(new java.net.URL(WSFinanceDataGetTypes_GetTypes_SoapPortSoap_address), this);
+                is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetTypes_GetTypes_SoapPortSoap_BindingStub _stub = new is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetTypes_GetTypes_SoapPortSoap_BindingStub(new java.net.URL(this.WSFinanceDataGetTypes_GetTypes_SoapPortSoap_address), this);
                 _stub.setPortName(getWSFinanceDataGetTypes_GetTypes_SoapPortSoapWSDDServiceName());
                 return _stub;
             }
@@ -116,11 +116,11 @@ public class WSFinanceDataGetTypes_GetTypes_SoapPortLocator extends org.apache.a
     private java.util.HashSet ports = null;
 
     public java.util.Iterator getPorts() {
-        if (ports == null) {
-            ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("http://WSFinanceDataGetTypes/", "WSFinanceDataGetTypes_GetTypes_SoapPortSoap"));
+        if (this.ports == null) {
+            this.ports = new java.util.HashSet();
+            this.ports.add(new javax.xml.namespace.QName("http://WSFinanceDataGetTypes/", "WSFinanceDataGetTypes_GetTypes_SoapPortSoap"));
         }
-        return ports.iterator();
+        return this.ports.iterator();
     }
 
     /**

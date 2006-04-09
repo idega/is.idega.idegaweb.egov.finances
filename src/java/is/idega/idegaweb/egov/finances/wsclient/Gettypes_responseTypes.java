@@ -33,7 +33,7 @@ public class Gettypes_responseTypes  implements java.io.Serializable {
      * @return type_id
      */
     public java.lang.String getType_id() {
-        return type_id;
+        return this.type_id;
     }
 
 
@@ -53,7 +53,7 @@ public class Gettypes_responseTypes  implements java.io.Serializable {
      * @return type
      */
     public java.lang.String getType() {
-        return type;
+        return this.type;
     }
 
 
@@ -73,7 +73,7 @@ public class Gettypes_responseTypes  implements java.io.Serializable {
      * @return description
      */
     public java.lang.String getDescription() {
-        return description;
+        return this.description;
     }
 
 
@@ -88,14 +88,20 @@ public class Gettypes_responseTypes  implements java.io.Serializable {
 
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Gettypes_responseTypes)) return false;
+        if (!(obj instanceof Gettypes_responseTypes)) {
+					return false;
+				}
         Gettypes_responseTypes other = (Gettypes_responseTypes) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
+        if (obj == null) {
+					return false;
+				}
+        if (this == obj) {
+					return true;
+				}
+        if (this.__equalsCalc != null) {
+            return (this.__equalsCalc == obj);
         }
-        __equalsCalc = obj;
+        this.__equalsCalc = obj;
         boolean _equals;
         _equals = true && 
             ((this.type_id==null && other.getType_id()==null) || 
@@ -107,16 +113,16 @@ public class Gettypes_responseTypes  implements java.io.Serializable {
             ((this.description==null && other.getDescription()==null) || 
              (this.description!=null &&
               this.description.equals(other.getDescription())));
-        __equalsCalc = null;
+        this.__equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
     public synchronized int hashCode() {
-        if (__hashCodeCalc) {
+        if (this.__hashCodeCalc) {
             return 0;
         }
-        __hashCodeCalc = true;
+        this.__hashCodeCalc = true;
         int _hashCode = 1;
         if (getType_id() != null) {
             _hashCode += getType_id().hashCode();
@@ -127,7 +133,7 @@ public class Gettypes_responseTypes  implements java.io.Serializable {
         if (getDescription() != null) {
             _hashCode += getDescription().hashCode();
         }
-        __hashCodeCalc = false;
+        this.__hashCodeCalc = false;
         return _hashCode;
     }
 

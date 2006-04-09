@@ -25,7 +25,7 @@ public class Gettypes_request  implements java.io.Serializable {
      * @return sf_id
      */
     public java.lang.String getSf_id() {
-        return sf_id;
+        return this.sf_id;
     }
 
 
@@ -40,34 +40,40 @@ public class Gettypes_request  implements java.io.Serializable {
 
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Gettypes_request)) return false;
+        if (!(obj instanceof Gettypes_request)) {
+					return false;
+				}
         Gettypes_request other = (Gettypes_request) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
+        if (obj == null) {
+					return false;
+				}
+        if (this == obj) {
+					return true;
+				}
+        if (this.__equalsCalc != null) {
+            return (this.__equalsCalc == obj);
         }
-        __equalsCalc = obj;
+        this.__equalsCalc = obj;
         boolean _equals;
         _equals = true && 
             ((this.sf_id==null && other.getSf_id()==null) || 
              (this.sf_id!=null &&
               this.sf_id.equals(other.getSf_id())));
-        __equalsCalc = null;
+        this.__equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
     public synchronized int hashCode() {
-        if (__hashCodeCalc) {
+        if (this.__hashCodeCalc) {
             return 0;
         }
-        __hashCodeCalc = true;
+        this.__hashCodeCalc = true;
         int _hashCode = 1;
         if (getSf_id() != null) {
             _hashCode += getSf_id().hashCode();
         }
-        __hashCodeCalc = false;
+        this.__hashCodeCalc = false;
         return _hashCode;
     }
 

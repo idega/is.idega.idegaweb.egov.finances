@@ -45,7 +45,7 @@ public class Getstate_responseRecords  implements java.io.Serializable {
      * @return sf_id
      */
     public java.lang.String getSf_id() {
-        return sf_id;
+        return this.sf_id;
     }
 
 
@@ -65,7 +65,7 @@ public class Getstate_responseRecords  implements java.io.Serializable {
      * @return social_security
      */
     public java.lang.String getSocial_security() {
-        return social_security;
+        return this.social_security;
     }
 
 
@@ -85,7 +85,7 @@ public class Getstate_responseRecords  implements java.io.Serializable {
      * @return type_id
      */
     public java.lang.String getType_id() {
-        return type_id;
+        return this.type_id;
     }
 
 
@@ -105,7 +105,7 @@ public class Getstate_responseRecords  implements java.io.Serializable {
      * @return description
      */
     public java.lang.String getDescription() {
-        return description;
+        return this.description;
     }
 
 
@@ -125,7 +125,7 @@ public class Getstate_responseRecords  implements java.io.Serializable {
      * @return balance
      */
     public java.math.BigDecimal getBalance() {
-        return balance;
+        return this.balance;
     }
 
 
@@ -145,7 +145,7 @@ public class Getstate_responseRecords  implements java.io.Serializable {
      * @return oldest_unpaid_date
      */
     public java.lang.String getOldest_unpaid_date() {
-        return oldest_unpaid_date;
+        return this.oldest_unpaid_date;
     }
 
 
@@ -160,14 +160,20 @@ public class Getstate_responseRecords  implements java.io.Serializable {
 
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Getstate_responseRecords)) return false;
+        if (!(obj instanceof Getstate_responseRecords)) {
+					return false;
+				}
         Getstate_responseRecords other = (Getstate_responseRecords) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
+        if (obj == null) {
+					return false;
+				}
+        if (this == obj) {
+					return true;
+				}
+        if (this.__equalsCalc != null) {
+            return (this.__equalsCalc == obj);
         }
-        __equalsCalc = obj;
+        this.__equalsCalc = obj;
         boolean _equals;
         _equals = true && 
             ((this.sf_id==null && other.getSf_id()==null) || 
@@ -188,16 +194,16 @@ public class Getstate_responseRecords  implements java.io.Serializable {
             ((this.oldest_unpaid_date==null && other.getOldest_unpaid_date()==null) || 
              (this.oldest_unpaid_date!=null &&
               this.oldest_unpaid_date.equals(other.getOldest_unpaid_date())));
-        __equalsCalc = null;
+        this.__equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
     public synchronized int hashCode() {
-        if (__hashCodeCalc) {
+        if (this.__hashCodeCalc) {
             return 0;
         }
-        __hashCodeCalc = true;
+        this.__hashCodeCalc = true;
         int _hashCode = 1;
         if (getSf_id() != null) {
             _hashCode += getSf_id().hashCode();
@@ -217,7 +223,7 @@ public class Getstate_responseRecords  implements java.io.Serializable {
         if (getOldest_unpaid_date() != null) {
             _hashCode += getOldest_unpaid_date().hashCode();
         }
-        __hashCodeCalc = false;
+        this.__hashCodeCalc = false;
         return _hashCode;
     }
 

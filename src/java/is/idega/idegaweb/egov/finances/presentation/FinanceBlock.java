@@ -1,5 +1,5 @@
 /*
- * $Id: FinanceBlock.java,v 1.1 2006/02/07 10:52:42 gimmi Exp $
+ * $Id: FinanceBlock.java,v 1.2 2006/04/09 12:00:08 laddi Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -25,7 +25,7 @@ public abstract class FinanceBlock extends Block {
 	}
 	
 	public void main(IWContext iwc) throws RemoteException {
-		iwrb = getResourceBundle(iwc);
+		this.iwrb = getResourceBundle(iwc);
 		present(iwc);
 	}
 	

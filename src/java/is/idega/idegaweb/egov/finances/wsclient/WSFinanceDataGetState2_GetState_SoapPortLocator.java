@@ -30,24 +30,24 @@ public class WSFinanceDataGetState2_GetState_SoapPortLocator extends org.apache.
     private java.lang.String WSFinanceDataGetState2_GetState_SoapPortSoap_address = "http://213.167.155.148/WSFinanceDataGetState2/WSFinanceDataGetState2_GetState_SoapPort.asmx";
 
     public java.lang.String getWSFinanceDataGetState2_GetState_SoapPortSoapAddress() {
-        return WSFinanceDataGetState2_GetState_SoapPortSoap_address;
+        return this.WSFinanceDataGetState2_GetState_SoapPortSoap_address;
     }
 
     // The WSDD service name defaults to the port name.
     private java.lang.String WSFinanceDataGetState2_GetState_SoapPortSoapWSDDServiceName = "WSFinanceDataGetState2_GetState_SoapPortSoap";
 
     public java.lang.String getWSFinanceDataGetState2_GetState_SoapPortSoapWSDDServiceName() {
-        return WSFinanceDataGetState2_GetState_SoapPortSoapWSDDServiceName;
+        return this.WSFinanceDataGetState2_GetState_SoapPortSoapWSDDServiceName;
     }
 
     public void setWSFinanceDataGetState2_GetState_SoapPortSoapWSDDServiceName(java.lang.String name) {
-        WSFinanceDataGetState2_GetState_SoapPortSoapWSDDServiceName = name;
+        this.WSFinanceDataGetState2_GetState_SoapPortSoapWSDDServiceName = name;
     }
 
     public is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_PortType getWSFinanceDataGetState2_GetState_SoapPortSoap() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
-            endpoint = new java.net.URL(WSFinanceDataGetState2_GetState_SoapPortSoap_address);
+            endpoint = new java.net.URL(this.WSFinanceDataGetState2_GetState_SoapPortSoap_address);
         }
         catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
@@ -67,7 +67,7 @@ public class WSFinanceDataGetState2_GetState_SoapPortLocator extends org.apache.
     }
 
     public void setWSFinanceDataGetState2_GetState_SoapPortSoapEndpointAddress(java.lang.String address) {
-        WSFinanceDataGetState2_GetState_SoapPortSoap_address = address;
+        this.WSFinanceDataGetState2_GetState_SoapPortSoap_address = address;
     }
 
     /**
@@ -78,7 +78,7 @@ public class WSFinanceDataGetState2_GetState_SoapPortLocator extends org.apache.
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
             if (is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
-                is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub _stub = new is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub(new java.net.URL(WSFinanceDataGetState2_GetState_SoapPortSoap_address), this);
+                is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub _stub = new is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetState2_GetState_SoapPortSoap_BindingStub(new java.net.URL(this.WSFinanceDataGetState2_GetState_SoapPortSoap_address), this);
                 _stub.setPortName(getWSFinanceDataGetState2_GetState_SoapPortSoapWSDDServiceName());
                 return _stub;
             }
@@ -116,11 +116,11 @@ public class WSFinanceDataGetState2_GetState_SoapPortLocator extends org.apache.
     private java.util.HashSet ports = null;
 
     public java.util.Iterator getPorts() {
-        if (ports == null) {
-            ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("http://WSFinanceDataGetState2/", "WSFinanceDataGetState2_GetState_SoapPortSoap"));
+        if (this.ports == null) {
+            this.ports = new java.util.HashSet();
+            this.ports.add(new javax.xml.namespace.QName("http://WSFinanceDataGetState2/", "WSFinanceDataGetState2_GetState_SoapPortSoap"));
         }
-        return ports.iterator();
+        return this.ports.iterator();
     }
 
     /**

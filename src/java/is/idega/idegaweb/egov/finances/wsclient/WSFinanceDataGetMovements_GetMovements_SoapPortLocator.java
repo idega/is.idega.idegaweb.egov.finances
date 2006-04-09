@@ -30,24 +30,24 @@ public class WSFinanceDataGetMovements_GetMovements_SoapPortLocator extends org.
     private java.lang.String WSFinanceDataGetMovements_GetMovements_SoapPortSoap_address = "http://213.167.155.148/WSFinanceDataGetMovements/WSFinanceDataGetMovements_GetMovements_SoapPort.asmx";
 
     public java.lang.String getWSFinanceDataGetMovements_GetMovements_SoapPortSoapAddress() {
-        return WSFinanceDataGetMovements_GetMovements_SoapPortSoap_address;
+        return this.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_address;
     }
 
     // The WSDD service name defaults to the port name.
     private java.lang.String WSFinanceDataGetMovements_GetMovements_SoapPortSoapWSDDServiceName = "WSFinanceDataGetMovements_GetMovements_SoapPortSoap";
 
     public java.lang.String getWSFinanceDataGetMovements_GetMovements_SoapPortSoapWSDDServiceName() {
-        return WSFinanceDataGetMovements_GetMovements_SoapPortSoapWSDDServiceName;
+        return this.WSFinanceDataGetMovements_GetMovements_SoapPortSoapWSDDServiceName;
     }
 
     public void setWSFinanceDataGetMovements_GetMovements_SoapPortSoapWSDDServiceName(java.lang.String name) {
-        WSFinanceDataGetMovements_GetMovements_SoapPortSoapWSDDServiceName = name;
+        this.WSFinanceDataGetMovements_GetMovements_SoapPortSoapWSDDServiceName = name;
     }
 
     public is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_PortType getWSFinanceDataGetMovements_GetMovements_SoapPortSoap() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
-            endpoint = new java.net.URL(WSFinanceDataGetMovements_GetMovements_SoapPortSoap_address);
+            endpoint = new java.net.URL(this.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_address);
         }
         catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
@@ -67,7 +67,7 @@ public class WSFinanceDataGetMovements_GetMovements_SoapPortLocator extends org.
     }
 
     public void setWSFinanceDataGetMovements_GetMovements_SoapPortSoapEndpointAddress(java.lang.String address) {
-        WSFinanceDataGetMovements_GetMovements_SoapPortSoap_address = address;
+        this.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_address = address;
     }
 
     /**
@@ -78,7 +78,7 @@ public class WSFinanceDataGetMovements_GetMovements_SoapPortLocator extends org.
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
             if (is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
-                is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub _stub = new is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub(new java.net.URL(WSFinanceDataGetMovements_GetMovements_SoapPortSoap_address), this);
+                is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub _stub = new is.idega.idegaweb.egov.finances.wsclient.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_BindingStub(new java.net.URL(this.WSFinanceDataGetMovements_GetMovements_SoapPortSoap_address), this);
                 _stub.setPortName(getWSFinanceDataGetMovements_GetMovements_SoapPortSoapWSDDServiceName());
                 return _stub;
             }
@@ -116,11 +116,11 @@ public class WSFinanceDataGetMovements_GetMovements_SoapPortLocator extends org.
     private java.util.HashSet ports = null;
 
     public java.util.Iterator getPorts() {
-        if (ports == null) {
-            ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("http://WSFinanceDataGetMovements/", "WSFinanceDataGetMovements_GetMovements_SoapPortSoap"));
+        if (this.ports == null) {
+            this.ports = new java.util.HashSet();
+            this.ports.add(new javax.xml.namespace.QName("http://WSFinanceDataGetMovements/", "WSFinanceDataGetMovements_GetMovements_SoapPortSoap"));
         }
-        return ports.iterator();
+        return this.ports.iterator();
     }
 
     /**

@@ -90,7 +90,7 @@ public class FinancialStatementMovements extends FinanceBlock {
 
 		Layer headingInfoLayer = new Layer(Layer.DIV);
 		headingInfoLayer.setStyleClass("caseInfoHeading");
-		headingInfoLayer.add(new Text(iwrb.getLocalizedString("balance", "Balance") + " (" + IWTimestamp.RightNow().getDateString("dd.MM.yyyy") + ") : "));
+		headingInfoLayer.add(new Text(this.iwrb.getLocalizedString("balance", "Balance") + " (" + IWTimestamp.RightNow().getDateString("dd.MM.yyyy") + ") : "));
 		headingInfoLayer.add(currencyFormat.format(item.getAmount()));
 		headerLayer.add(headingInfoLayer);
 		
@@ -112,7 +112,7 @@ public class FinancialStatementMovements extends FinanceBlock {
 		
 		Layer helpLayer = new Layer(Layer.DIV);
 		helpLayer.setStyleClass("helpLayer");
-		helpLayer.add(new Text(iwrb.getLocalizedString("financial_movements.helper_text", "Help text...")));
+		helpLayer.add(new Text(this.iwrb.getLocalizedString("financial_movements.helper_text", "Help text...")));
 
 		Layer section = new Layer(Layer.DIV);
 		section.setStyleClass("formSection");
@@ -129,7 +129,7 @@ public class FinancialStatementMovements extends FinanceBlock {
 		Layer formItem = new Layer(Layer.DIV);
 		formItem.setStyleClass("formItem");
 		Label label = new Label();
-		label.add(new Text(iwrb.getLocalizedString("from", "From")));
+		label.add(new Text(this.iwrb.getLocalizedString("from", "From")));
 		formItem.add(label);
 		formItem.add(inp);
 		section.add(formItem);
@@ -137,12 +137,12 @@ public class FinancialStatementMovements extends FinanceBlock {
 		formItem = new Layer(Layer.DIV);
 		formItem.setStyleClass("formItem");
 		label = new Label();
-		label.add(new Text(iwrb.getLocalizedString("to", "To")));
+		label.add(new Text(this.iwrb.getLocalizedString("to", "To")));
 		formItem.add(label);
 		formItem.add(toInp);
 		section.add(formItem);
 
-		SubmitButton button = new SubmitButton(iwrb.getLocalizedString("get", "Get"));
+		SubmitButton button = new SubmitButton(this.iwrb.getLocalizedString("get", "Get"));
 		button.setStyleClass("indentedButton");
 		section.add(button);
 		
@@ -160,7 +160,7 @@ public class FinancialStatementMovements extends FinanceBlock {
 		table.setCellpadding(0);
 		table.setCellspacing(0);
 		table.setWidth("100%");
-		table.setStyleClass(tableStyleClass);
+		table.setStyleClass(this.tableStyleClass);
 		table.setStyleClass("ruler");
 		layer.add(table);
 
@@ -171,28 +171,28 @@ public class FinancialStatementMovements extends FinanceBlock {
 		TableCell2 cell = row.createHeaderCell();
 		cell.setStyleClass("description");
 		cell.setStyleClass("firstColumn");
-		cell.add(new Text(iwrb.getLocalizedString("description",
+		cell.add(new Text(this.iwrb.getLocalizedString("description",
 		"Description")));
 
 		cell = row.createHeaderCell();
 		cell.setStyleClass("amount");
-		cell.add(new Text(iwrb.getLocalizedString("amount", "Amount")));
+		cell.add(new Text(this.iwrb.getLocalizedString("amount", "Amount")));
 
 		cell = row.createHeaderCell();
 		cell.setStyleClass("balance");
-		cell.add(new Text(iwrb.getLocalizedString("balance", "Balance")));
+		cell.add(new Text(this.iwrb.getLocalizedString("balance", "Balance")));
 		
 		cell = row.createHeaderCell();
 		cell.setStyleClass("dueDate");
 		cell.setStyleClass("lastColumn");
-		cell.add(new Text(iwrb.getLocalizedString("due_date", "Due date")));
+		cell.add(new Text(this.iwrb.getLocalizedString("due_date", "Due date")));
 
 		group = table.createBodyRowGroup();
 
 		boolean odd = true;
 
 		Collection items = getBusiness(iwc).getStatementItems(communeNumber,
-				personalId, item, fromStamp, toStamp, movementsEndPoint);
+				personalId, item, fromStamp, toStamp, this.movementsEndPoint);
 		Iterator iIter = items.iterator();
 
 		double sum = 0.0d;
@@ -240,7 +240,7 @@ public class FinancialStatementMovements extends FinanceBlock {
 		cell = row.createCell();
 		row.setStyleClass("total");
 		cell.setStyleClass("firstColumn");
-		cell.add(new Text(iwrb.getLocalizedString("total", "Total")));
+		cell.add(new Text(this.iwrb.getLocalizedString("total", "Total")));
 		cell = row.createCell();
 		cell.setStyleClass("amount");
 		cell.add(new Text(currencyFormat.format(sum)));
@@ -254,9 +254,9 @@ public class FinancialStatementMovements extends FinanceBlock {
 		buttonLayer.setStyleClass("buttonLayer");
 		layer.add(buttonLayer);
 		
-		GenericButton backLink = new GenericButton("back", iwrb.getLocalizedString("back", "Back"));
-		if (backPage != null) {
-			backLink.setPageToOpen(backPage);
+		GenericButton backLink = new GenericButton("back", this.iwrb.getLocalizedString("back", "Back"));
+		if (this.backPage != null) {
+			backLink.setPageToOpen(this.backPage);
 		}
 		buttonLayer.add(backLink);
 		
@@ -277,6 +277,6 @@ public class FinancialStatementMovements extends FinanceBlock {
 	}
 	
 	public void setBackPage(ICPage page) {
-		backPage = page;
+		this.backPage = page;
 	}
 }

@@ -1,5 +1,5 @@
 /*
- * $Id: FinancialStatement.java,v 1.11 2006/03/09 12:07:50 palli Exp $
+ * $Id: FinancialStatement.java,v 1.12 2006/04/09 12:00:08 laddi Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -57,15 +57,15 @@ public class FinancialStatement extends FinanceBlock {
 	private int iMaxNumberOfEntries = -1;
 
 	protected void present(IWContext iwc) throws RemoteException {
-		if (fixedPersonalId == null) {
-			fixedPersonalId = iwc.getCurrentUser().getPersonalID();
+		if (this.fixedPersonalId == null) {
+			this.fixedPersonalId = iwc.getCurrentUser().getPersonalID();
 		}
 		
-		if (fixedCommuneNumber == null) {
-			fixedCommuneNumber = getBusiness(iwc).getHomeCommuneNumber();
+		if (this.fixedCommuneNumber == null) {
+			this.fixedCommuneNumber = getBusiness(iwc).getHomeCommuneNumber();
 		}
 		
-		add(getStatement(fixedCommuneNumber, fixedPersonalId, iwc));
+		add(getStatement(this.fixedCommuneNumber, this.fixedPersonalId, iwc));
 	}
 
 	private Layer getStatement(String communeNumber, String personalId, IWContext iwc) throws RemoteException {
@@ -79,14 +79,14 @@ public class FinancialStatement extends FinanceBlock {
 		
 		Layer headingLayer = new Layer(Layer.DIV);
 		headingLayer.setStyleClass("caseHeading");
-		headingLayer.add(new Text(iwrb.getLocalizedString("financial_statement", "Financial statement")));
+		headingLayer.add(new Text(this.iwrb.getLocalizedString("financial_statement", "Financial statement")));
 		headerLayer.add(headingLayer);
 		
 		Table2 table = new Table2();
 		table.setCellpadding(0);
 		table.setCellspacing(0);
 		table.setWidth("100%");
-		table.setStyleClass(tableStyleClass);
+		table.setStyleClass(this.tableStyleClass);
 		table.setStyleClass("ruler");
 		layer.add(table);
 		
@@ -97,17 +97,17 @@ public class FinancialStatement extends FinanceBlock {
 		TableCell2 cell = row.createHeaderCell();
 		cell.setStyleClass("paymentType");
 		cell.setStyleClass("firstColumn");
-		cell.add(new Text(iwrb.getLocalizedString("payment_type",
+		cell.add(new Text(this.iwrb.getLocalizedString("payment_type",
 				"Payment type")));
 
 		cell = row.createHeaderCell();
 		cell.setStyleClass("balance");
-		cell.add(new Text(iwrb.getLocalizedString("balance", "Balance") + " (" + IWTimestamp.RightNow().getDateString("dd.MM.yy") + ")"));
+		cell.add(new Text(this.iwrb.getLocalizedString("balance", "Balance") + " (" + IWTimestamp.RightNow().getDateString("dd.MM.yy") + ")"));
 
 		cell = row.createHeaderCell();
 		cell.setStyleClass("firstDueDate");
 		cell.setStyleClass("lastColumn");
-		cell.add(new Text(iwrb.getLocalizedString("first_due_date",
+		cell.add(new Text(this.iwrb.getLocalizedString("first_due_date",
 				"First due date")));
 
 		group = table.createBodyRowGroup();
@@ -118,7 +118,7 @@ public class FinancialStatement extends FinanceBlock {
 		currencyFormat.setMaximumFractionDigits(0);
 		currencyFormat.setMinimumFractionDigits(0);
 
-		Collection coll = getBusiness(iwc).getPaymentItems(communeNumber, personalId, stateEndPoint);
+		Collection coll = getBusiness(iwc).getPaymentItems(communeNumber, personalId, this.stateEndPoint);
 		Iterator iter = coll.iterator();
 		int iRow = 1;
 		while (iter.hasNext()) {
@@ -140,8 +140,8 @@ public class FinancialStatement extends FinanceBlock {
 			link.addParameter(PARAMETER_PERSONAL_ID, personalId);
 			link.addParameter(PARAMETER_PAYMENT_ITEM_NAME, p.getName());
 			link.addParameter(PARAMETER_PAYMENT_ITEM_AMOUNT, Double.toString(p.getAmount()));
-			if (page != null) {
-				link.setPage(page);
+			if (this.page != null) {
+				link.setPage(this.page);
 			}
 			
 			cell = row.createCell();
@@ -159,7 +159,7 @@ public class FinancialStatement extends FinanceBlock {
 					iwc.getCurrentLocale(), IWTimestamp.SHORT)));
 
 			
-			if (iMaxNumberOfEntries != -1 && iRow == iMaxNumberOfEntries) {
+			if (this.iMaxNumberOfEntries != -1 && iRow == this.iMaxNumberOfEntries) {
 				row.setStyleClass("lastRow");
 				break;
 			}
@@ -199,7 +199,7 @@ public class FinancialStatement extends FinanceBlock {
 	}
 	
 	public void setMaximumNumberOfEntries(int maxNumberOfEntries) {
-		iMaxNumberOfEntries = maxNumberOfEntries;
+		this.iMaxNumberOfEntries = maxNumberOfEntries;
 	}
 	
 	public void setResponsePage(ICPage page) {

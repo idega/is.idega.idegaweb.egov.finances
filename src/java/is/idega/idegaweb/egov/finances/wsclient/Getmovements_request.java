@@ -41,7 +41,7 @@ public class Getmovements_request  implements java.io.Serializable {
      * @return sf_id
      */
     public int getSf_id() {
-        return sf_id;
+        return this.sf_id;
     }
 
 
@@ -61,7 +61,7 @@ public class Getmovements_request  implements java.io.Serializable {
      * @return social_security
      */
     public java.lang.String getSocial_security() {
-        return social_security;
+        return this.social_security;
     }
 
 
@@ -81,7 +81,7 @@ public class Getmovements_request  implements java.io.Serializable {
      * @return date_from
      */
     public java.lang.String getDate_from() {
-        return date_from;
+        return this.date_from;
     }
 
 
@@ -101,7 +101,7 @@ public class Getmovements_request  implements java.io.Serializable {
      * @return date_to
      */
     public java.lang.String getDate_to() {
-        return date_to;
+        return this.date_to;
     }
 
 
@@ -121,7 +121,7 @@ public class Getmovements_request  implements java.io.Serializable {
      * @return type_id
      */
     public int getType_id() {
-        return type_id;
+        return this.type_id;
     }
 
 
@@ -136,14 +136,20 @@ public class Getmovements_request  implements java.io.Serializable {
 
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Getmovements_request)) return false;
+        if (!(obj instanceof Getmovements_request)) {
+					return false;
+				}
         Getmovements_request other = (Getmovements_request) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
+        if (obj == null) {
+					return false;
+				}
+        if (this == obj) {
+					return true;
+				}
+        if (this.__equalsCalc != null) {
+            return (this.__equalsCalc == obj);
         }
-        __equalsCalc = obj;
+        this.__equalsCalc = obj;
         boolean _equals;
         _equals = true && 
             this.sf_id == other.getSf_id() &&
@@ -157,16 +163,16 @@ public class Getmovements_request  implements java.io.Serializable {
              (this.date_to!=null &&
               this.date_to.equals(other.getDate_to()))) &&
             this.type_id == other.getType_id();
-        __equalsCalc = null;
+        this.__equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
     public synchronized int hashCode() {
-        if (__hashCodeCalc) {
+        if (this.__hashCodeCalc) {
             return 0;
         }
-        __hashCodeCalc = true;
+        this.__hashCodeCalc = true;
         int _hashCode = 1;
         _hashCode += getSf_id();
         if (getSocial_security() != null) {
@@ -179,7 +185,7 @@ public class Getmovements_request  implements java.io.Serializable {
             _hashCode += getDate_to().hashCode();
         }
         _hashCode += getType_id();
-        __hashCodeCalc = false;
+        this.__hashCodeCalc = false;
         return _hashCode;
     }
 

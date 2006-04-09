@@ -1,5 +1,5 @@
 /*
- * $Id: PaymentItem.java,v 1.2 2006/02/27 14:03:13 palli Exp $
+ * $Id: PaymentItem.java,v 1.3 2006/04/09 12:00:08 laddi Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -22,7 +22,7 @@ public class PaymentItem {
 	private int entryTypeId;
 
 	public double getAmount() {
-		return amount;
+		return this.amount;
 	}
 
 	public void setAmount(double amount) {
@@ -30,7 +30,7 @@ public class PaymentItem {
 	}
 
 	public IWTimestamp getLastDate() {
-		return lastDate;
+		return this.lastDate;
 	}
 
 	public void setLastDate(IWTimestamp lastDate) {
@@ -38,7 +38,7 @@ public class PaymentItem {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -46,7 +46,7 @@ public class PaymentItem {
 	}
 
 	public int getEntryTypeId() {
-		return entryTypeId;
+		return this.entryTypeId;
 	}
 
 	public void setEntryTypeId(int entryTypeId) {
