@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <projectDescription>
-  <name>is.idega.idegaweb.egov.application</name>
+  <name>is.idega.idegaweb.egov.finances</name>
   <comment>
   </comment>
   <projects>
@@ -9,6 +9,7 @@
     <project>com.idega.user</project>
     <project>com.idega.block.process</project>
     <project>org.apache.axis</project>
+    <project>com.idega.block.web2.0</project>
   </projects>
   <buildSpec>
     <buildCommand>
