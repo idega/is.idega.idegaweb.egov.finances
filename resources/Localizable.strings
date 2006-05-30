@@ -11,6 +11,7 @@ first_due_date=First due date
 from=From
 get=Get
 iw.component.is.idega.idegaweb.egov.finances.presentation.FinancialStatement.name=FinancialStatement
+iw.component.is.idega.idegaweb.egov.finances.presentation.FinancialStatementMovements.name=FinancialStatementMovements
 payment_type=Payment type
 to=To
 total=Total
