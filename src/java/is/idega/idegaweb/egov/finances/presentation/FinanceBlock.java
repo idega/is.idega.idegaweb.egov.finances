@@ -1,5 +1,5 @@
 /*
- * $Id: FinanceBlock.java,v 1.2 2006/04/09 12:00:08 laddi Exp $
+ * $Id: FinanceBlock.java,v 1.3 2009/01/28 13:15:16 laddi Exp $
  * Created on Feb 3, 2006
  *
  * Copyright (C) 2006 Idega Software hf. All Rights Reserved.
@@ -13,6 +13,7 @@ import java.rmi.RemoteException;
 import com.idega.idegaweb.IWResourceBundle;
 import com.idega.presentation.Block;
 import com.idega.presentation.IWContext;
+import com.idega.util.PresentationUtil;
 
 
 public abstract class FinanceBlock extends Block {
@@ -26,6 +27,7 @@ public abstract class FinanceBlock extends Block {
 	
 	public void main(IWContext iwc) throws RemoteException {
 		this.iwrb = getResourceBundle(iwc);
+		PresentationUtil.addStyleSheetToHeader(iwc, iwc.getIWMainApplication().getBundle("is.idega.idegaweb.egov.application").getVirtualPathWithFileNameString("style/application.css"));
 		present(iwc);
 	}
 	
